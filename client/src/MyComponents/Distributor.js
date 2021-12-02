@@ -1,6 +1,7 @@
-import React , {useState}from 'react'
+import React,{useState}from 'react'
 
-export const UpdateMedic = (props) => {
+export const Distributor = (props) => {
+
 
     const [UPC, setUpc] = useState({
         upc: "",
@@ -23,25 +24,27 @@ export const UpdateMedic = (props) => {
         e.preventDefault();
         const temp = { ...UPC, id: new Date().getTime().toString() }
         console.log(temp.upc);
-        { props.UpdateMed(temp.upc,btnid) };
+         { props.UpdateMed_dist(temp.upc,btnid) };
         // setRecords([...records,newRecord]);
     };
 
-
-
     return (
         <div>
-            <h1>This page is for updating already made med</h1>
+             <h1>This will be our Distributor portal</h1>
+            <h3>Here the distributor can type upc and update various details.</h3>
+
 
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">UPC to update </label>
-                <input type ="text" className="form-control"   value={UPC.upc} onChange = {handleInput} name="upc"  id="upc"/>
+                <input type ="text" className="form-control"  value={UPC.upc} onChange = {handleInput}   name="upc"  id="upc"/>
             </div>
-            <button onClick={handleClick} data-mssg="1" className="btn-sm btn-success"> Packed </button>
-            <button onClick={handleClick} data-mssg="2" className="btn-sm btn-success"> ForSale </button>
-            <button onClick={handleClick} data-mssg="3" className="btn-sm btn-success"> Sold </button> 
-            <button onClick={handleClick} data-mssg="4" className="btn-sm btn-success"> Shipped </button>           
-            
+
+            <button onClick={handleClick} data-mssg="1" className="btn-sm btn-success"> Recieved </button>
+            <button onClick={handleClick} data-mssg="2" className="btn-sm btn-success"> Sold </button>
+            <button onClick={handleClick} data-mssg="3" className="btn-sm btn-success"> Shipped </button> 
+           
+             
+
 
         </div>
     )

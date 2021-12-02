@@ -9,6 +9,8 @@ import { MainPage } from "./MyComponents/MainPage";
 import { MakeMedicine } from "./MyComponents/MakeMedicine";
 import { UpdateMedic } from "./MyComponents/UpdateMedic";
 import { Patient } from "./MyComponents/Patient";
+import { Distributor } from "./MyComponents/Distributor";
+import { Pharmacist } from "./MyComponents/Pharmacist";
 
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -43,14 +45,70 @@ class App extends Component {
   };
 
 
-  UpdateMed = async(upc) =>{
+  UpdateMed_pharma = async(upc,funcid) => {
+    const { accounts, contract } = this.state;
+    alert("working"); 
+    console.log("this is for checking purpose");
+    console.log(accounts[0]);
+
+    if(funcid ==1) {
+      console.log("recieved distributor");
+      await contract.methods.Recieved_Pharma(upc).send({from : accounts[0]});
+    }
+    if(funcid ==2){
+      console.log("sold to pharma ");
+      await contract.methods.Sold_to_Patient(upc).send({from : accounts[0]});
+    }
+    if(funcid ==3){
+      console.log("shipped to pharma");
+      await contract.methods.Shipped_to_Patient(upc).send({from : accounts[0]});
+
+    }
+  }
+
+
+
+  UpdateMed_dist = async(upc,funcid) => {
+    const { accounts, contract } = this.state;
+    alert("working"); 
+    console.log("this is for checking purpose");
+    console.log(accounts[0]);
+
+    if(funcid ==1) {
+      console.log("recieved distributor");
+      await contract.methods.RecievedDistributor(upc).send({from : accounts[0]});
+    }
+    if(funcid ==2){
+      console.log("sold to pharma ");
+      await contract.methods.SoldtoPharma(upc).send({from : accounts[0]});
+    }
+    if(funcid ==3){
+      console.log("shipped to pharma");
+      await contract.methods.ShippedtoPharma(upc).send({from : accounts[0]});
+
+    }
+  }
+
+  UpdateMed = async(upc,funcid) =>{
     const { accounts, contract } = this.state;
     alert("working");
     console.log("this is for checking purpose");
     console.log(accounts[0]);
 
-    // if(funcid == 1){
-      await contract.methods.packMedicine(upc).send({from : accounts[0]});
+    if(funcid == 1){
+      alert("packed called");
+       await contract.methods.packMedicine(upc).send({from : accounts[0]});
+    }
+    if(funcid == 2){
+      alert("For sale called");
+       await contract.methods.forSale_bymanuf(upc).send({from : accounts[0]});
+    }if(funcid == 3){
+      alert("sold called");
+       await contract.methods.soldToDistributor(upc).send({from : accounts[0]});
+    }if(funcid == 4){
+      alert("shipped called");
+       await contract.methods.shippedByManufacturer(upc).send({from : accounts[0]});
+    }
     
   }
 
@@ -138,7 +196,10 @@ class App extends Component {
           <Route path="/manufacturer" element={<Form />}></Route>
           <Route path="/manufacturer/makemedicine" element={<MakeMedicine sendtochain={this.sendtochain}/>}> </Route> 
           <Route path="/manufacturer/UpdateMedic" element={<UpdateMedic UpdateMed={this.UpdateMed}/>}> </Route> 
+          <Route path ="distributor" element={<Distributor UpdateMed_dist={this.UpdateMed_dist}/>}></Route>
+          <Route path="/pharmacist" element={<Pharmacist UpdateMed_pharma={this.UpdateMed_pharma}/> }></Route>
           <Route path="/patient" element={<Patient fetch_state={this.fetch_state}/>}></Route>
+
           </Routes>
           
          

@@ -14,25 +14,43 @@ contract SimpleStorage {
   // Define a variable called 'sku' for Stock Keeping Unit (SKU)
   uint  sku;
 
-
+  //manufacturer events
   event Made(uint upc);
   event Packed(uint upc);
   event ForSale(uint upc);
-  event Sold(uint upc);
-  event Shipped(uint upc);
-  event Received(uint upc);
+  event Soldtodistributor(uint upc);
+  event shippedbymanufacturer(uint upc);
+  //distributor events
+  event recievedDistributor(uint upc);
+  event soldtoPharma(uint upc);
+  event shippedtoPharma(uint upc);
+  //pharma events
+  event recievedpharma(uint upc);
+  event soldtopatient(uint upc);
+  event shippedtopatient(uint upc);
+  //Patientt event 
   event Purchased(uint upc);
 
     // Define enum 'State' with the following values:
   enum State 
   { 
+    //manufacturer states
     Made,       // 0
     Packed,     // 1
     ForSale,    // 2
-    Sold,       // 3
-    Shipped,    // 4
-    Received,   // 5
-    Purchased   // 6
+    Soldtodistributor, //3
+    shippedbymanufacturer,//4
+    //distributor states
+    RecievedDistributor, //5
+    SoldtoPharma, //6
+    ShippedtoPharma,  //7
+    //Pharmacist
+    RecievedPharma, //8
+    SoldtoPatient , //9
+    ShippedtoPatient //10
+
+
+
   }
 
    struct Medicine {
@@ -117,6 +135,7 @@ contract SimpleStorage {
 
   // }
 
+  //manufacturer sub events
 
   function packMedicine(uint _upc) public {
   // // Call modifier to check if upc has passed previous supply chain stage
@@ -131,6 +150,137 @@ contract SimpleStorage {
     // Emit the appropriate event
     emit Packed(_upc);
   }
+
+   function forSale_bymanuf(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.ForSale;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit ForSale(_upc);
+  }
+
+   function soldToDistributor(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.Soldtodistributor;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit Soldtodistributor(_upc);
+  }
+
+
+
+
+ function shippedByManufacturer(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.shippedbymanufacturer;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit shippedbymanufacturer(_upc);
+  }
+
+  //distributor controlled functions
+
+  function RecievedDistributor(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.RecievedDistributor;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit recievedDistributor(_upc);
+  }
+  function SoldtoPharma(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.SoldtoPharma;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit soldtoPharma(_upc);
+  }
+  function ShippedtoPharma(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.ShippedtoPharma;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit shippedtoPharma(_upc);
+  }
+
+
+  //Pharmacist functions 
+
+  function Recieved_Pharma(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.RecievedPharma;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit recievedpharma(_upc);
+  }
+  function Sold_to_Patient(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.SoldtoPatient;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit soldtopatient(_upc);
+  }
+  function Shipped_to_Patient(uint _upc) public {
+  // // Call modifier to check if upc has passed previous supply chain stage
+  // Made(_upc);
+  // Call modifier to verify caller of this function
+  
+    // Update the appropriate fields
+    medicines[_upc].medicineState = State.ShippedtoPatient;
+   // string memory history = medicinehistory[_upc];
+    //history = history + " packed by manufacturer on date____";
+    //medicinehistory[_upc] = history;
+    // Emit the appropriate event
+    emit shippedtopatient(_upc);
+  }
+
 
 
   function fetchstate(uint _upc) public view returns (State _medicineState){
