@@ -1,7 +1,13 @@
-import React ,{useState} from 'react'
+import React ,{useState} from 'react';
+ 
 
 export const Patient = (props) => {
     
+    const [result, setRes] = useState({
+        res : "",
+    })
+     
+
     const [UPC, setUpc] = useState({
         upc: "",
     }); 
@@ -19,11 +25,12 @@ export const Patient = (props) => {
     const handleClick = async(e) => {
          console.log("nothing happens for right now");
         const upc = UPC.upc;
-        var res = "";
-        { res = props.fetch_state(upc);
-          
+         
+        { var response =await  props.fetch_state(upc);
+          setRes({ ...result, res :response  });
         };
-        
+         
+
        
          
     };
@@ -43,6 +50,10 @@ export const Patient = (props) => {
                 <input type ="text" className="form-control"   value={UPC.upc} onChange = {handleInput} name="upc"  id="upc"/>
             </div>  
             <button onClick={handleClick} className="btn-sm btn-primary">Submit Request</button>
+
+
+
+            <p>The current state of the medicine is : {result.res}</p>
         </div>
     )
 }
