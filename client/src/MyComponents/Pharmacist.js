@@ -3,6 +3,7 @@ import React,{useState}from 'react'
 export const Pharmacist = (props) => {
     const [UPC, setUpc] = useState({
         upc: "",
+        myCurrentTime : new Date().toLocaleString(),
     }); 
 
     // const [records,setRecords] = useState([]);
@@ -22,7 +23,8 @@ export const Pharmacist = (props) => {
         e.preventDefault();
         const temp = { ...UPC, id: new Date().getTime().toString() }
         console.log(temp.upc);
-          { props.UpdateMed_pharma(temp.upc,btnid) };
+        const date = UPC.myCurrentTime;
+          { props.UpdateMed_pharma(temp.upc,btnid,date) };
         // setRecords([...records,newRecord]);
     };
     return (

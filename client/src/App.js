@@ -45,7 +45,7 @@ class App extends Component {
   };
 
 
-  UpdateMed_pharma = async(upc,funcid) => {
+  UpdateMed_pharma = async(upc,funcid,_date) => {
     const { accounts, contract } = this.state;
     alert("working"); 
     console.log("this is for checking purpose");
@@ -53,22 +53,31 @@ class App extends Component {
 
     if(funcid ==1) {
       console.log("recieved distributor");
-      await contract.methods.Recieved_Pharma(upc).send({from : accounts[0]});
+      var history = "This medicine was recieved by pharmacist on" + _date;
+      alert(history);
+      console.log(history);
+      await contract.methods.Recieved_Pharma(upc,history).send({from : accounts[0]});
     }
     if(funcid ==2){
       console.log("sold to pharma ");
-      await contract.methods.Sold_to_Patient(upc).send({from : accounts[0]});
+      var history = "This medicine was sold to patient by pharmacist on" + _date;
+      alert(history);
+      console.log(history);
+      await contract.methods.Sold_to_Patient(upc,history).send({from : accounts[0]});
     }
     if(funcid ==3){
       console.log("shipped to pharma");
-      await contract.methods.Shipped_to_Patient(upc).send({from : accounts[0]});
+      var history = "This medicine was shipped to patient by pharmacist on" + _date;
+      alert(history);
+      console.log(history);
+      await contract.methods.Shipped_to_Patient(upc,history).send({from : accounts[0]});
 
     }
   }
 
 
 
-  UpdateMed_dist = async(upc,funcid) => {
+  UpdateMed_dist = async(upc,funcid,_date) => {
     const { accounts, contract } = this.state;
     alert("working"); 
     console.log("this is for checking purpose");
@@ -76,20 +85,29 @@ class App extends Component {
 
     if(funcid ==1) {
       console.log("recieved distributor");
-      await contract.methods.RecievedDistributor(upc).send({from : accounts[0]});
+      var history = "This medicine was recieved by manufacturer on" + _date;
+       alert(history);
+       console.log(history);
+      await contract.methods.RecievedDistributor(upc,history).send({from : accounts[0]});
     }
     if(funcid ==2){
       console.log("sold to pharma ");
-      await contract.methods.SoldtoPharma(upc).send({from : accounts[0]});
+      var history = "This medicine was sold to pharmacist by distributor on" + _date;
+       alert(history);
+       console.log(history);
+      await contract.methods.SoldtoPharma(upc,history).send({from : accounts[0]});
     }
     if(funcid ==3){
       console.log("shipped to pharma");
-      await contract.methods.ShippedtoPharma(upc).send({from : accounts[0]});
+      var history = "This medicine was shipped to pharmacist by distributor on" + _date;
+       alert(history);
+       console.log(history);
+      await contract.methods.ShippedtoPharma(upc,history).send({from : accounts[0]});
 
     }
   }
 
-  UpdateMed = async(upc,funcid) =>{
+  UpdateMed = async(upc,funcid,_date) =>{
     const { accounts, contract } = this.state;
     alert("working");
     console.log("this is for checking purpose");
@@ -97,17 +115,29 @@ class App extends Component {
 
     if(funcid == 1){
       alert("packed called");
-       await contract.methods.packMedicine(upc).send({from : accounts[0]});
+       var history = "This medicine was packed by the manufacturer on" + _date;
+       alert(history);
+       console.log(history);
+       await contract.methods.packMedicine(upc,history).send({from : accounts[0]});
     }
     if(funcid == 2){
       alert("For sale called");
-       await contract.methods.forSale_bymanuf(upc).send({from : accounts[0]});
+      var history = "This medicine was marked on sale by the manufacturer on" + _date;
+      alert(history);
+      console.log(history);
+       await contract.methods.forSale_bymanuf(upc,history).send({from : accounts[0]});
     }if(funcid == 3){
       alert("sold called");
-       await contract.methods.soldToDistributor(upc).send({from : accounts[0]});
+      var history = "This medicine was sold by the manufacturer to distributor on" + _date;
+      alert(history);
+      console.log(history);
+       await contract.methods.soldToDistributor(upc,history).send({from : accounts[0]});
     }if(funcid == 4){
       alert("shipped called");
-       await contract.methods.shippedByManufacturer(upc).send({from : accounts[0]});
+      var history = "This medicine was shipped by the manufacturer on" + _date;
+      alert(history);
+      console.log(history);
+       await contract.methods.shippedByManufacturer(upc,history).send({from : accounts[0]});
     }
     
   }
@@ -119,9 +149,12 @@ class App extends Component {
     alert("working");
     const response = await contract.methods.fetchstate(upc).call();
 
-    // console.log( response);     
+
+     console.log( response._medicineState);     
     // console.log(response);
-    var t = response;
+    var s = response._history;
+    console.log(s);
+    var t = response._history;
     console.log(t);
     return t;
     
@@ -129,7 +162,7 @@ class App extends Component {
 
 
 
-  sendtochain = async (t) => {
+  sendtochain = async (t,_history) => {
     const { accounts, contract } = this.state;
     alert("working");
     console.log("this is for checking purpose");
@@ -154,9 +187,10 @@ class App extends Component {
     console.log(Longitude);
     console.log(factoryinfo);
     console.log(notes);
+    console.log(_history);
 
 
-    await contract.methods.makeMedicine(upc, accounts[0], manufacturername, factoryinfo, Latitude, Longitude, notes).send({ from: accounts[0] });
+    await contract.methods.makeMedicine(upc, accounts[0], manufacturername, factoryinfo, Latitude, Longitude, notes,_history).send({ from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
     //const response = await contract.methods.get().call();

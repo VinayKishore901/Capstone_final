@@ -4,6 +4,7 @@ export const UpdateMedic = (props) => {
 
     const [UPC, setUpc] = useState({
         upc: "",
+        myCurrentTime : new Date().toLocaleString(),
     }); 
 
     // const [records,setRecords] = useState([]);
@@ -22,8 +23,9 @@ export const UpdateMedic = (props) => {
         console.log(btnid);
         e.preventDefault();
         const temp = { ...UPC, id: new Date().getTime().toString() }
+        const date = UPC.myCurrentTime;
         console.log(temp.upc);
-        { props.UpdateMed(temp.upc,btnid) };
+        { props.UpdateMed(temp.upc,btnid,date) };
         // setRecords([...records,newRecord]);
     };
 

@@ -5,6 +5,7 @@ export const Distributor = (props) => {
 
     const [UPC, setUpc] = useState({
         upc: "",
+        myCurrentTime : new Date().toLocaleString(),
     }); 
 
     // const [records,setRecords] = useState([]);
@@ -24,7 +25,8 @@ export const Distributor = (props) => {
         e.preventDefault();
         const temp = { ...UPC, id: new Date().getTime().toString() }
         console.log(temp.upc);
-         { props.UpdateMed_dist(temp.upc,btnid) };
+        const date = UPC.myCurrentTime;
+         { props.UpdateMed_dist(temp.upc,btnid,date) };
         // setRecords([...records,newRecord]);
     };
 

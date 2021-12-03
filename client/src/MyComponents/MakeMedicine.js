@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export const MakeMedicine = (props) => {
 
-
+   
     const [MedReg, setMedReg] = useState({
         Name: "",
         Price: "",
@@ -14,6 +14,7 @@ export const MakeMedicine = (props) => {
         originFactoryLongitude: "",
         originFactoryInformation: "",
         medicineNotes: "",
+        myCurrentTime : new Date().toLocaleString(),
     });
 
     // const [records,setRecords] = useState([]);
@@ -30,7 +31,10 @@ export const MakeMedicine = (props) => {
         e.preventDefault();
         const newRecord = { ...MedReg, id: new Date().getTime().toString() }
         console.log(newRecord.medicineNotes);
-        { props.sendtochain(newRecord) };
+        var history = "This medicine was made by manufaturer"+ " " + newRecord.manufacturername + "on" + MedReg.myCurrentTime;
+        alert(history);
+        console.log(history);
+         { props.sendtochain(newRecord,history) };
         // setRecords([...records,newRecord]);
     };
 
