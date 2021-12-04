@@ -220,6 +220,8 @@ class App extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
+
+    <>
       <div className="App">
 
        
@@ -242,19 +244,12 @@ class App extends Component {
         {/* <Form sendtochain={this.sendtochain}/> */}
         {/* <h3>Congratulations manufacturer following block has been created and fetched from ganache blockchain</h3> */}
 
-       
-
-
-
-       
-      
-        
-
-  
-      
-    
-
       </div>
+
+
+
+
+    </>
 
     );
   }
