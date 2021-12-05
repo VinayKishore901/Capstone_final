@@ -11,6 +11,7 @@ import { UpdateMedic } from "./MyComponents/UpdateMedic";
 import { Patient } from "./MyComponents/Patient";
 import { Distributor } from "./MyComponents/Distributor";
 import { Pharmacist } from "./MyComponents/Pharmacist";
+import {  Signin } from "./MyComponents/Signin";
 
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -228,7 +229,8 @@ class App extends Component {
         
           <Routes>
           <Route path="/" element={<MainPage/>}> </Route>
-          <Route  path="/admin" element={<Admin/>}></Route>
+          <Route  path="/Signin" element={<Signin/>}></Route>
+          <Route path="/admin" element={<Admin/>}></Route>
           <Route path="/manufacturer" element={<Form />}></Route>
           <Route path="/manufacturer/makemedicine" element={<MakeMedicine sendtochain={this.sendtochain}/>}> </Route> 
           <Route path="/manufacturer/UpdateMedic" element={<UpdateMedic UpdateMed={this.UpdateMed}/>}> </Route> 
