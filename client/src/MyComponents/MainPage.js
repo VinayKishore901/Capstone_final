@@ -90,14 +90,15 @@ export const MainPage = () => {
 
 
 
-
+  <div class="u-body">
     <header className="u-black u-clearfix u-header u-header" id="sec-9fb2"><div className="u-clearfix u-sheet u-sheet-1">
-        <a to="https://nicepage.com" className="u-image u-logo u-image-1" data-image-width="212" data-image-height="159">
+        <Link to="/" className="u-image u-logo u-image-1" data-image-width="212" data-image-height="159">
           <img src="images/logo.PNG" className="u-logo-image u-logo-image-1"/>
-        </a>
+        </Link>
         <nav className="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div className="menu-collapse" styles="font-size: 1rem; letter-spacing: 0px;">
-            <a to="/" className="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" >
+
+            <Link to="/" className="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" >
               <svg>
                   <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#menu-hamburger"></use>
                   </svg>
@@ -110,53 +111,58 @@ export const MainPage = () => {
                     </symbol>
                   </defs>
                 </svg>
-            </a>
+            </Link>
+
           </div>
           <div className="u-custom-menu u-nav-container">
             <ul className="u-nav u-unstyled u-nav-1">
                 <li className="u-nav-item">
-                    <a to="/" className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"  styles="padding: 10px 20px;">Home</a>
+                    <Link to="/" className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"  styles="padding: 10px 20px;">Home</Link>
                 </li>
                 <li className="u-nav-item">
-                    <a to="/" className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" styles="padding: 10px 20px;">Goto</a>
+                    <Link to="/" className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" styles="padding: 10px 20px;">Goto</Link>
                     <div className="u-nav-popup">
                         <ul className="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2">
                             <li className="u-nav-item">
-                                <a to="/" className="u-button-style u-nav-link u-white" >Manufacturer</a>
+                                <Link to="/manufacturer" className="u-button-style u-nav-link u-white" >Manufacturer</Link>
                             </li>
                             <li className="u-nav-item">
-                                <a to="/" className="u-button-style u-nav-link u-white" >Distributor</a>
+                                <Link to="distributor" className="u-button-style u-nav-link u-white" >Distributor</Link>
                             </li>
                             <li className="u-nav-item">
-                                <a to="/" className="u-button-style u-nav-link u-white" >Pharmacist</a>
+                                <Link to="/pharmacist" className="u-button-style u-nav-link u-white" >Pharmacist</Link>
                             </li>
                             <li className="u-nav-item">
-                                <a to="/" className="u-button-style u-nav-link u-white" >Patient</a>
+                                <Link to="/patient" className="u-button-style u-nav-link u-white" >Patient</Link>
                             </li>
                         </ul>
                     </div>
                 </li>
                 <li className="u-nav-item">
-                    <a to="/" className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" styles="padding: 10px 20px;">Contact</a>
+                    <Link to="/" className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" styles="padding: 10px 20px;">Contact</Link>
                 </li>
             </ul>
           </div>
+
+          {/* this further header code is for the mobile view */}
 
           <div className="u-custom-menu u-nav-container-collapse">
             <div className="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div className="u-inner-container-layout u-sidenav-overflow">
                 <div className="u-menu-close"></div>
-                <ul className="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
-                    <li className="u-nav-item">
-                        <a className="u-button-style u-nav-link" to="/" styles="padding: 10px 20px;">Home</a>
-                    </li>
-                    <li className="u-nav-item">
-                        <a className="u-button-style u-nav-link" to="/" styles="padding: 10px 20px;">Goto</a><div className="u-nav-popup"><ul className="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4"><li className="u-nav-item"><a className="u-button-style u-nav-link">Manufacturer</a>
-                    </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Distributor</a>
-                    </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Pharmacist</a>
-                    </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Patient</a>
-                    </li>
-                </ul>
+                  <ul className="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                      <li className="u-nav-item">
+                          <a className="u-button-style u-nav-link" to="/" styles="padding: 10px 20px;">Home</a>
+                      </li>
+                      <li className="u-nav-item">
+                          <a className="u-button-style u-nav-link" to="/" styles="padding: 10px 20px;">Goto</a><div className="u-nav-popup">
+                            <ul className="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4">
+                            <li className="u-nav-item"><a className="u-button-style u-nav-link">Manufacturer</a>
+                      </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Distributor</a>
+                      </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Pharmacist</a>
+                      </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Patient</a>
+                      </li>
+                  </ul>
                 </div>
                 </li><li className="u-nav-item">
                     <a className="u-button-style u-nav-link" to="Contact.html" styles="padding: 10px 20px;">Contact</a>
@@ -180,7 +186,7 @@ export const MainPage = () => {
                   <h2 className="u-custom-font u-text u-text-body-alt-color u-text-1" data-animation-name="zoomIn" data-animation-duration="1000" data-animation-direction="Down">Med. Chain</h2>
                   <h2 className="u-custom-font u-text u-text-body-alt-color u-text-2" data-animation-name="zoomIn" data-animation-duration="1000" data-animation-direction="Down">supplychain solutions</h2>
                   <p className="u-text u-text-body-alt-color u-text-3">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident</p>
-                  <a to="https://nicepage.com/k/aesthetic-html-templates" className="u-btn u-button-style u-palette-4-base u-btn-1">learn more</a>
+                  <Link to="/" className="u-btn u-button-style u-palette-4-base u-btn-1">learn more</Link>
                 </div>
               </div>
               <div className="u-align-left u-container-style u-effect-hover-zoom u-hover-feature u-layout-cell u-opacity u-opacity-35 u-right-cell u-size-20 u-size-xs-60 u-layout-cell-2" data-image-width="1119" data-image-height="1080" data-animation-name="zoomIn" data-animation-duration="500" data-animation-direction="Down">
@@ -193,70 +199,80 @@ export const MainPage = () => {
           </div>
         </div>
       </div>
-      
-      
-      
     </section>
+
+
     <section className="u-align-center u-clearfix u-image u-section-2" id="carousel_1e0d" data-image-width="1600" data-image-height="1067">
       <div className="u-clearfix u-sheet u-sheet-1">
         <div className="u-clearfix u-gutter-18 u-layout-wrap u-layout-wrap-1">
           <div className="u-gutter-0 u-layout">
             <div className="u-layout-row">
+
+
               <div className="u-container-style u-layout-cell u-size-12 u-layout-cell-1">
                 <div className="u-container-layout u-container-layout-1">
                   <div className="u-clearfix u-expanded-width u-gutter-16 u-layout-wrap u-layout-wrap-2">
                     <div className="u-gutter-0 u-layout">
                       <div className="u-layout-row">
+
                         <div className="u-black u-container-style u-layout-cell u-opacity u-opacity-40 u-radius-10 u-size-60 u-layout-cell-2" data-animation-name="slideIn" data-animation-duration="1000" data-animation-direction="Left" data-animation-delay="0">
                           <div className="u-border-2 u-border-grey-10 u-container-layout u-valign-top u-container-layout-2">
                             <h3 className="u-align-center u-text u-text-default u-text-1">ADMIN</h3>
                             <p className="u-text u-text-2"> This is for the admin who is responsible for mainting this DApp.</p><span className="u-file-icon u-icon u-icon-circle u-icon-1">
                                 <img src="images/business-men-office-cartoon-characters-people-sit-work-morning-illustration-vector-business-men-office-cartoon-characters-174502752.jpg" alt=""/></span>
                             <p className="u-text u-text-palette-1-light-2 u-text-3"> Please click below to be redirected to the Admin Page </p>
-                            <a to="https://nicepage.com/c/gallery-website-templates" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-1" target="_blank">CLICK HERE</a>
+                            <Link to="/admin" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-1" target="_blank">CLICK HERE</Link>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+
               <div className="u-align-center u-black u-container-style u-layout-cell u-opacity u-opacity-40 u-radius-10 u-size-12-lg u-size-12-xl u-size-14-sm u-size-14-xs u-size-30-md u-layout-cell-3" data-animation-name="slideIn" data-animation-duration="1000" data-animation-direction="Left" data-animation-delay="250">
                 <div className="u-border-2 u-border-grey-10 u-container-layout u-container-layout-3">
                   <h3 className="u-text u-text-4">MANUFACTURE​R</h3>
                   <p className="u-text u-text-5"> This for the various manufacturers those are attached to our Dapp.</p><span className="u-file-icon u-icon u-icon-circle u-icon-2">
                       <img src="images/manufacturer-flat-vector-illustration-man-monitoring-factory-production-line-counting-revenue-manufacturing-process-concept-178869482.jpg" alt=""/></span>
                   <p className="u-text u-text-palette-1-light-2 u-text-6"> Please click below to be redirected to the Manufacturer Page </p>
-                  <a to="https://nicepage.com/c/gallery-website-templates" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-2" target="_blank">CLICK HERE</a>
+                  <Link to="/manufacturer" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-2" target="_blank">CLICK HERE</Link>
                 </div>
               </div>
+
+
               <div className="u-black u-container-style u-layout-cell u-opacity u-opacity-40 u-radius-10 u-size-12-lg u-size-12-xl u-size-14-sm u-size-14-xs u-size-30-md u-layout-cell-4" data-animation-name="slideIn" data-animation-duration="1000" data-animation-direction="Left" data-animation-delay="500">
                 <div className="u-border-2 u-border-grey-10 u-container-layout u-valign-top u-container-layout-4">
                   <h3 className="u-align-center u-text u-text-default u-text-7">DISTRIBUTOR</h3>
                   <p className="u-text u-text-8"> This for the Distributor to set info about  medicines on blockchain .</p><span className="u-file-icon u-hover-feature u-icon u-icon-circle u-spacing-10 u-text-palette-2-base u-icon-3">
                       <img src="images/dis.jpg" alt=""/></span>
                   <p className="u-text u-text-palette-1-light-2 u-text-9"> Please click below to be redirected to the Distributer Page </p>
-                  <a to="https://nicepage.com/k/quiz-html-templates" className="u-btn u-btn-round u-button-style u-palette-4-base u-radius-50 u-btn-3" target="_blank">Purchase</a>
-                  <a to="https://nicepage.com/c/gallery-website-templates" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-4" target="_blank">CLICK HERE</a>
+                  <Link to="distributor" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-3" target="_blank">CLICK HERE</Link>
                 </div>
               </div>
+
+
               <div className="u-black u-container-style u-layout-cell u-opacity u-opacity-40 u-radius-10 u-size-12-lg u-size-12-xl u-size-14-sm u-size-14-xs u-size-30-md u-layout-cell-5" data-animation-name="slideIn" data-animation-duration="1000" data-animation-direction="Left" data-animation-delay="750">
                 <div className="u-border-2 u-border-white u-container-layout u-valign-top u-container-layout-5">
                   <h3 className="u-align-center u-text u-text-default u-text-10">PHARMACIST</h3>
                   <p className="u-text u-text-11"> This for the Pharmacist to update about various medicines on blockchain .</p><span className="u-file-icon u-icon u-icon-circle u-icon-4">
                       <img src="images/141663155-vector-illustration-pharmacist-at-counter-in-pharmacy-pharmacy-with-pharmacist-in-counter-and-people.webp" alt=""/></span>
                   <p className="u-text u-text-palette-1-light-2 u-text-12"> Please click below to be redirected to the Pharmicist Page </p>
-                  <a to="https://nicepage.com/website-mockup" className="u-border-none u-btn u-btn-round u-button-style u-palette-4-dark-1 u-radius-50 u-btn-5" target="_blank">Purchase</a>
-                  <a to="https://nicepage.com/c/gallery-website-templates" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-6" target="_blank">CLICK HERE</a>
+                  {/* <a to="https://nicepage.com/website-mockup" className="u-border-none u-btn u-btn-round u-button-style u-palette-4-dark-1 u-radius-50 u-btn-5" target="_blank">Purchase</a> */}
+                  <Link to="/pharmacist" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-5" target="_blank">CLICK HERE</Link>
                 </div>
               </div>
+
+
               <div className="u-black u-container-style u-layout-cell u-opacity u-opacity-40 u-radius-10 u-shape-round u-size-12-lg u-size-12-xl u-size-14-sm u-size-14-xs u-size-30-md u-layout-cell-6" data-animation-name="slideIn" data-animation-duration="1000" data-animation-delay="1000" data-animation-direction="Left">
                 <div className="u-border-2 u-border-grey-10 u-container-layout u-container-layout-6">
                   <h3 className="u-text u-text-default u-text-13">PATIENT</h3>
                   <p className="u-text u-text-14"> This for the patients to see Information about various medicines on blockchain .</p><span className="u-file-icon u-icon u-icon-circle u-icon-5">
                       <img src="images/640891901.jpg" alt=""/></span>
                   <p className="u-text u-text-palette-1-light-2 u-text-15"> Please click below to be redirected to the Patien​t Page </p>
-                  <a to="https://nicepage.com/c/gallery-website-templates" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-7" target="_blank">CLICK HERE</a>
+                  <Link to="/patient" className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-7" target="_blank">CLICK HERE</Link>
                 </div>
               </div>
             </div>
@@ -310,13 +326,21 @@ export const MainPage = () => {
             </div>
           </div>
         </div>
-        <div className="u-border-1 u-border-white u-expanded-width u-line u-line-horizontal u-opacity u-opacity-50 u-line-1"></div>
-        <a to="https://nicepage.com" className="u-image u-logo u-image-1" data-image-width="212" data-image-height="159">
+      <div className="u-border-1 u-border-white u-expanded-width u-line u-line-horizontal u-opacity u-opacity-50 u-line-1"></div>
+        <Link to="/" className="u-image u-logo u-image-1" data-image-width="212" data-image-height="159">
           <img src="images/logo.PNG" className="u-logo-image u-logo-image-1"/>
-        </a>
+        </Link>
         <div className="u-social-icons u-spacing-10 u-social-icons-1">
-          <a className="u-social-url" title="facebook" target="_blank" to="Home.html"><span className="u-icon u-social-facebook u-social-icon u-icon-1"><svg className="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" styles=""><use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#svg-287e"></use></svg><svg className="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-287e"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2
-            c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path></svg></span>
+          <a className="u-social-url" title="facebook" target="_blank" to="Home.html">
+            <span className="u-icon u-social-facebook u-social-icon u-icon-1">
+              <svg className="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" styles="">
+                <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#svg-287e"></use>
+              </svg>
+              <svg className="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-287e">
+                <circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle>
+                <path fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path>
+              </svg>
+            </span>
           </a>
           <a className="u-social-url" title="twitter" target="_blank" to="Home.html"><span className="u-icon u-social-icon u-social-twitter u-icon-2"><svg className="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" styles=""><use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#svg-0d29"></use></svg><svg className="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-0d29"><circle fill="currentColor" className="st0" cx="56.1" cy="56.1" r="55"></circle><path fill="#FFFFFF" d="M83.8,47.3c0,0.6,0,1.2,0,1.7c0,17.7-13.5,38.2-38.2,38.2C38,87.2,31,85,25,81.2c1,0.1,2.1,0.2,3.2,0.2
             c6.3,0,12.1-2.1,16.7-5.7c-5.9-0.1-10.8-4-12.5-9.3c0.8,0.2,1.7,0.2,2.5,0.2c1.2,0,2.4-0.2,3.5-0.5c-6.1-1.2-10.8-6.7-10.8-13.1
@@ -335,8 +359,9 @@ export const MainPage = () => {
           </a>
         </div>
       </div>
-      </footer>
+    </footer>
 
-        </>
+  </div>
+  </>
     )
 }
