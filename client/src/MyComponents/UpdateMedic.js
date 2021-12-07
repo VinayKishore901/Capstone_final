@@ -32,7 +32,8 @@ export const UpdateMedic = (props) => {
 
 
     return (
-        <div>
+        <>
+        {/* <div>
             <h1>This page is for updating already made med</h1>
 
             <div className="mb-3">
@@ -45,6 +46,101 @@ export const UpdateMedic = (props) => {
             <button onClick={handleClick} data-mssg="4" className="btn-sm btn-success"> Shipped </button>           
             
 
+        </div> */}
+
+
+<div className="u-body">
+
+    <section className="u-clearfix u-image u-section-7" id="carousel_738a" data-image-width="1600" data-image-height="1067">
+      <div className="u-clearfix u-sheet u-sheet-1">
+        <h1 className="u-custom-font u-text u-text-body-alt-color u-text-1">MANUFACTURER</h1>
+        <img src="/images/medicine_manufacturer_2.jpg" alt="" className="u-image u-image-default u-image-1" data-image-width="750" data-image-height="500"/>
+        <div className="u-align-center u-container-style u-group u-opacity u-opacity-20 u-white u-group-1">
+          <div className="u-container-layout u-container-layout-1">
+            <blockquote className="u-text u-text-2">Updating already made medicine</blockquote>
+
+
+            <div className="u-align-left u-expanded-width-xs u-form u-form-1">
+              <form action="#" method="POST" className="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" styles="padding: 10px" source="custom" name="form">
+                
+                <div className="u-form-group u-form-name u-form-group-1">
+                  <label htmlFor="name-5a14" className="u-form-control-hidden u-label" wfd-invisible="true">Name</label>
+                  <input type="text" placeholder="UPC to Update" id="name-5a14" name="name" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                </div>
+
+                <div className="u-align-left u-form-group u-form-submit u-form-group-2">
+
+                <button onClick={handleClick} data-mssg="1" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1"> Packed </button>
+                <br/>
+                <button onClick={handleClick} data-mssg="2" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1"> For Sale </button>
+                <br/>
+                <button onClick={handleClick} data-mssg="3" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1"> Sold </button> 
+                <br/>
+                <button onClick={handleClick} data-mssg="4" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1"> Shipped </button>
+
+                  {/* <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">packed</a>
+                  <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">for sale</a>
+                  <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">sold</a>
+                  <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">shipped</a> */}
+                </div>
+
+                
+                <div className="u-form-send-message u-form-send-success" wfd-invisible="true"> Thank you! Your message has been sent. </div>
+                <div className="u-form-send-error u-form-send-message" wfd-invisible="true"> Unable to send your message. Please fix errors then try again. </div>
+                <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true"/>
+
+
+
+
+              </form>
+            </div>
+
+            {/* <div className="u-align-left u-expanded-width-xs u-form u-form-2">
+              <form action="#" method="POST" className="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" styles="padding: 10px" source="custom" name="form">
+                <div className="u-align-left u-form-group u-form-submit u-form-group-3">
+                  <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-2">for sale</a>
+                  <input type="submit" value="submit" className="u-form-control-hidden" wfd-invisible="true"/>
+                </div>
+                <div className="u-form-send-message u-form-send-success" wfd-invisible="true"> Thank you! Your message has been sent. </div>
+                <div className="u-form-send-error u-form-send-message" wfd-invisible="true"> Unable to send your message. Please fix errors then try again. </div>
+                <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true"/>
+              </form>
+            </div>
+
+            <div className="u-align-left u-expanded-width-xs u-form u-form-3">
+              <form action="#" method="POST" className="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" styles="padding: 10px" source="custom" name="form">
+                <div className="u-align-left u-form-group u-form-submit u-form-group-4">
+                  <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-3">sold</a>
+                  <input type="submit" value="submit" className="u-form-control-hidden" wfd-invisible="true"/>
+                </div>
+                <div className="u-form-send-message u-form-send-success" wfd-invisible="true"> Thank you! Your message has been sent. </div>
+                <div className="u-form-send-error u-form-send-message" wfd-invisible="true"> Unable to send your message. Please fix errors then try again. </div>
+                <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true"/>
+              </form>
+            </div>
+
+            <div className="u-align-left u-expanded-width-xs u-form u-form-4">
+              <form action="#" method="POST" className="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" styles="padding: 10px" source="custom" name="form">
+                <div className="u-align-left u-form-group u-form-submit u-form-group-5">
+                  <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-4">shipped</a>
+                  <input type="submit" value="submit" className="u-form-control-hidden" wfd-invisible="true"/>
+                </div>
+                <div className="u-form-send-message u-form-send-success" wfd-invisible="true"> Thank you! Your message has been sent. </div>
+                <div className="u-form-send-error u-form-send-message" wfd-invisible="true"> Unable to send your message. Please fix errors then try again. </div>
+                <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true"/>
+              </form>
+            </div>
+             */}
+          </div>
         </div>
+      </div>
+    </section>
+
+
+</div>
+
+
+
+        </>
     )
 }

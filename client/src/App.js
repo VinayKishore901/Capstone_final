@@ -4,7 +4,7 @@ import getWeb3 from "./getWeb3";
 import "./App.css";
 import {Admin} from "./MyComponents/Admin"
 import { Form } from "./MyComponents/Form";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link , Switch} from 'react-router-dom';
 import { MainPage } from "./MyComponents/MainPage";
 import { MakeMedicine } from "./MyComponents/MakeMedicine";
 import { UpdateMedic } from "./MyComponents/UpdateMedic";
@@ -12,6 +12,8 @@ import { Patient } from "./MyComponents/Patient";
 import { Distributor } from "./MyComponents/Distributor";
 import { Pharmacist } from "./MyComponents/Pharmacist";
 import {  Signin } from "./MyComponents/Signin";
+import {Navbar} from "./MyComponents/Navbar";
+import {Footer} from "./MyComponents/Footer";
 
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -225,9 +227,11 @@ class App extends Component {
     <>
       <div className="App">
 
-       
+        <Navbar />
+
         
           <Routes>
+
           <Route path="/" element={<MainPage/>}> </Route>
           <Route  path="/Signin" element={<Signin/>}></Route>
           <Route path="/admin" element={<Admin/>}></Route>
@@ -237,9 +241,11 @@ class App extends Component {
           <Route path ="distributor" element={<Distributor UpdateMed_dist={this.UpdateMed_dist}/>}></Route>
           <Route path="/pharmacist" element={<Pharmacist UpdateMed_pharma={this.UpdateMed_pharma}/> }></Route>
           <Route path="/patient" element={<Patient fetch_state={this.fetch_state}/>}></Route>
+          
 
           </Routes>
           
+
          
         
      
@@ -248,11 +254,9 @@ class App extends Component {
 
       </div>
 
+      <Footer />
 
-
-
-    </>
-
+      </>
     );
   }
 }

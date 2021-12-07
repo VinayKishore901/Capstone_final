@@ -91,7 +91,7 @@ export const MainPage = () => {
 
 
       <div class="u-body">
-        <header className="u-black u-clearfix u-header u-header" id="sec-9fb2"><div className="u-clearfix u-sheet u-sheet-1">
+        {/* <header className="u-black u-clearfix u-header u-header" id="sec-9fb2"><div className="u-clearfix u-sheet u-sheet-1">
           <Link to="/" className="u-image u-logo u-image-1" data-image-width="212" data-image-height="159">
             <img src="images/logo.PNG" className="u-logo-image u-logo-image-1" />
           </Link>
@@ -144,37 +144,37 @@ export const MainPage = () => {
               </ul>
             </div>
 
-            {/* this further header code is for the mobile view */}
+            
 
-            <div className="u-custom-menu u-nav-container-collapse">
-              <div className="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-                <div className="u-inner-container-layout u-sidenav-overflow">
-                  <div className="u-menu-close"></div>
-                  <ul className="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
-                    <li className="u-nav-item">
-                      <a className="u-button-style u-nav-link" to="/" styles="padding: 10px 20px;">Home</a>
-                    </li>
-                    <li className="u-nav-item">
-                      <a className="u-button-style u-nav-link" to="/" styles="padding: 10px 20px;">Goto</a><div className="u-nav-popup">
-                        <ul className="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4">
-                          <li className="u-nav-item"><a className="u-button-style u-nav-link">Manufacturer</a>
-                          </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Distributor</a>
-                          </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Pharmacist</a>
-                          </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Patient</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li><li className="u-nav-item">
-                      <a className="u-button-style u-nav-link" to="Contact.html" styles="padding: 10px 20px;">Contact</a>
-                    </li></ul>
-                </div>
-              </div>
+        //     <div className="u-custom-menu u-nav-container-collapse">
+        //       <div className="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+        //         <div className="u-inner-container-layout u-sidenav-overflow">
+        //           <div className="u-menu-close"></div>
+        //           <ul className="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+        //             <li className="u-nav-item">
+        //               <a className="u-button-style u-nav-link" to="/" styles="padding: 10px 20px;">Home</a>
+        //             </li>
+        //             <li className="u-nav-item">
+        //               <a className="u-button-style u-nav-link" to="/" styles="padding: 10px 20px;">Goto</a><div className="u-nav-popup">
+        //                 <ul className="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4">
+        //                   <li className="u-nav-item"><a className="u-button-style u-nav-link">Manufacturer</a>
+        //                   </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Distributor</a>
+        //                   </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Pharmacist</a>
+        //                   </li><li className="u-nav-item"><a className="u-button-style u-nav-link" to="/">Patient</a>
+        //                   </li>
+        //                 </ul>
+        //               </div>
+        //             </li><li className="u-nav-item">
+        //               <a className="u-button-style u-nav-link" to="Contact.html" styles="padding: 10px 20px;">Contact</a>
+        //             </li></ul>
+        //         </div>
+        //       </div>
 
-              <div className="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-            </div>
-          </nav>
-        </div>
-        </header>
+        //       <div className="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        //     </div>
+        //   </nav>
+        // </div>
+        // </header> */}
 
         <section className="u-align-center u-clearfix u-image u-section-1" id="carousel_dac8" data-image-width="1600" data-image-height="1067">
           <div className="u-clearfix u-sheet u-sheet-1">
@@ -273,8 +273,10 @@ export const MainPage = () => {
                       <p className="u-text u-text-14"> This for the patients to see Information about various medicines on blockchain .</p><span className="u-file-icon u-icon u-icon-circle u-icon-5">
                         <img src="images/640891901.jpg" alt="" /></span>
                       <p className="u-text u-text-palette-1-light-2 u-text-15"> Please click below to be redirected to the Patien​t Page </p>
-                      <Link to="/patient"><button className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-1" target="_blank">CLICK HERE</button>
-                      </Link>                </div>
+                      <Link to="/patient">
+                        <button className="u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-50 u-btn-1" target="_blank">CLICK HERE</button>
+                      </Link>                
+                    </div>
                   </div>
                 </div>
               </div>
@@ -284,7 +286,7 @@ export const MainPage = () => {
         </section>
 
 
-        <footer className="u-clearfix u-footer u-grey-80" id="sec-ac42"><div className="u-clearfix u-sheet u-sheet-1">
+        {/* <footer className="u-clearfix u-footer u-grey-80" id="sec-ac42"><div className="u-clearfix u-sheet u-sheet-1">
           <div className="u-clearfix u-expanded-width u-gutter-30 u-layout-wrap u-layout-wrap-1">
             <div className="u-gutter-0 u-layout">
               <div className="u-layout-row">
@@ -360,7 +362,7 @@ export const MainPage = () => {
             </a>
           </div>
         </div>
-        </footer>
+        </footer> */}
 
       </div>
     </>
