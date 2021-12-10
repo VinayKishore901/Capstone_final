@@ -1,8 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.21 <0.7.0;
+import "./Roles.sol";
+import "./DistributorRole.sol";
+import "./ManufacturerRole.sol";
+import "./PatientRole.sol";
+import "./PharmacistRole.sol";
 
-contract SimpleStorage {
 
+
+contract SimpleStorage is PharmacistRole, PatientRole, ManufacturerRole, DistributorRole  {
+
+  //debugging functions
+
+  function checker(address _add) public {
+       _addManufacturer(_add);
+  }
 
 
   //basic functions
@@ -20,7 +32,7 @@ contract SimpleStorage {
 
 
 
-
+  
 
 
   
@@ -87,17 +99,20 @@ contract SimpleStorage {
     string  medicineNotes; // Product Notes
     uint    medicinePrice; // Product Price
     State   medicineState;  // Product State as represented in the enum above
+    
     address distributorID;  // Metamask-Ethereum address of the Distributor
     address pharmacistID; // Metamask-Ethereum address of the Pharmacist
     address patientID; // Metamask-Ethereum address of the Patient
+    string DistName;
+    string PharamaName;
+    string  DistLatitude; // Factory Latitude
+    string  DistLongitude;  // Factory Longitude
+    string  PharmaLatitude; // Factory Latitude
+    string  PharmaLongitude;  // Factory Longitude
   }
 
 
-  function makeMedicine(uint _upc, address _originManufacturerID, string memory _originFactoryName, string memory _originFactoryInformation, string  memory _originFactoryLatitude, string  memory _originFactoryLongitude, string  memory _medicineNotes, string memory _history) public
-  
-
-
-  {
+  function makeMedicine(uint _upc, address _originManufacturerID, string memory _originFactoryName, string memory _originFactoryInformation, string  memory _originFactoryLatitude, string  memory _originFactoryLongitude, string  memory _medicineNotes, string memory _history) public onlyManufacturer {
     // Add the new medicine as part of medicines
     Medicine memory temp_medicine = Medicine({
       sku:sku + 1,
@@ -114,9 +129,17 @@ contract SimpleStorage {
       medicinePrice:0,
       distributorID:address(0),
       pharmacistID:address(0),
-      patientID:address(0)
+      patientID:address(0),
+      DistName: " ",
+      PharamaName :" ",
+      DistLongitude : " ",
+      DistLatitude : " ",
+      PharmaLatitude : " ",
+      PharmaLongitude  : " "
 
       });
+
+
     //string storage initial_history="This med is made by date will be passed by frontend" ;
     medicines[_upc] = temp_medicine;
     medicinehistory[_upc]  =_history;
@@ -238,13 +261,17 @@ contract SimpleStorage {
 
   //distributor controlled functions
 
-  function RecievedDistributor(uint _upc,string memory _history) public {
+  function RecievedDistributor(uint _upc,string memory _name,string memory _long,string memory _lat,address _address,string memory _history) public {
   // // Call modifier to check if upc has passed previous supply chain stage
   // Made(_upc);
   // Call modifier to verify caller of this function
   
     // Update the appropriate fields
-    medicines[_upc].medicineState = State.RecievedDistributor;
+      medicines[_upc].medicineState = State.RecievedDistributor;
+      medicines[_upc].DistName = _name;
+      medicines[_upc].DistLongitude = _long;
+      medicines[_upc].DistLatitude = _lat;
+      medicines[_upc].distributorID = _address;
    // string memory history = medicinehistory[_upc];
     //history = history + " packed by manufacturer on date____";
     //medicinehistory[_upc] = history;
@@ -254,7 +281,7 @@ contract SimpleStorage {
     // Emit the appropriate event
     emit recievedDistributor(_upc);
   }
-  function SoldtoPharma(uint _upc,string memory _history) public {
+  function SoldtoPharma(uint _upc , string memory _history) public {
   // // Call modifier to check if upc has passed previous supply chain stage
   // Made(_upc);
   // Call modifier to verify caller of this function
@@ -270,7 +297,7 @@ contract SimpleStorage {
     // Emit the appropriate event
     emit soldtoPharma(_upc);
   }
-  function ShippedtoPharma(uint _upc,string memory _history) public {
+  function ShippedtoPharma(uint _upc, string memory _history) public {
   // // Call modifier to check if upc has passed previous supply chain stage
   // Made(_upc);
   // Call modifier to verify caller of this function
@@ -290,13 +317,17 @@ contract SimpleStorage {
 
   //Pharmacist functions 
 
-  function Recieved_Pharma(uint _upc,string memory _history) public {
+  function Recieved_Pharma(uint _upc,string memory _name,string memory _long,string memory _lat,address _address,string memory _history) public {
   // // Call modifier to check if upc has passed previous supply chain stage
   // Made(_upc);
   // Call modifier to verify caller of this function
   
     // Update the appropriate fields
     medicines[_upc].medicineState = State.RecievedPharma;
+    medicines[_upc].PharamaName = _name;
+      medicines[_upc].PharmaLongitude= _long;
+      medicines[_upc].PharmaLatitude = _lat;
+      medicines[_upc].pharmacistID = _address;
    // string memory history = medicinehistory[_upc];
     //history = history + " packed by manufacturer on date____";
     //medicinehistory[_upc] = history;

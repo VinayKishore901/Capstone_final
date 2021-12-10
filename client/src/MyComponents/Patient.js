@@ -28,7 +28,10 @@ export const Patient = (props) => {
          
         { var response =await  props.fetch_state(upc);
           setRes({ ...result, res :response  });
+          console.log(response);
+          
         };
+        alert("checking");
          
 
        
@@ -69,7 +72,7 @@ export const Patient = (props) => {
             <blockquote class="u-text u-text-2">Type UPC and Check various details</blockquote>
             <div class="u-align-left u-expanded-width-xs u-form u-form-1">
 
-              <form class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" styles="padding: 10px" source="custom" name="form">
+              {/* <form class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" styles="padding: 10px" source="custom" name="form"> */}
                 <div class="u-form-group u-form-name u-form-group-1">
                   <label htmlFor="name-ffe5" class="u-form-control-hidden u-label"></label>
                   <input type="text" placeholder="Enter UPC you want to Enquire" value={UPC.upc} onChange = {handleInput} name="upc"  id="upc" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
@@ -84,7 +87,7 @@ export const Patient = (props) => {
                 {/* <div class="u-form-send-message u-form-send-success" wfd-invisible="true"> Thank you! Your message has been sent. </div>
                 <div class="u-form-send-error u-form-send-message" wfd-invisible="true"> Unable to send your message. Please fix errors then try again. </div>
                 <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true"/> */}
-              </form>
+              {/* </form> */}
 
             </div>
           </div>

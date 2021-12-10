@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
+import Roles from "./contracts/Roles.json";
+import ManufacturerRole from "./contracts/ManufacturerRole.json";
+import DistributorRole from "./contracts/DistributorRole.json";
+import PharmacistRole from "./contracts/PatientRole.json";
+import PatientRole from  "./contracts/PatientRole.json";
+
+
 import getWeb3 from "./getWeb3";
 import "./App.css";
 import {Admin} from "./MyComponents/Admin"
@@ -48,7 +55,7 @@ class App extends Component {
   };
 
 
-  UpdateMed_pharma = async(upc,funcid,_date) => {
+  UpdateMed_pharma = async(upc,funcid,name,long,lat,_date) => {
     const { accounts, contract } = this.state;
     alert("working"); 
     console.log("this is for checking purpose");
@@ -56,10 +63,10 @@ class App extends Component {
 
     if(funcid ==1) {
       console.log("recieved distributor");
-      var history = "This medicine was recieved by pharmacist on" + _date;
+      var history = "This medicine was recieved by pharmacist " + name +  "on" + _date;
       alert(history);
       console.log(history);
-      await contract.methods.Recieved_Pharma(upc,history).send({from : accounts[0]});
+      await contract.methods.Recieved_Pharma(upc,name,long,lat,accounts[0],history).send({from : accounts[0]});
     }
     if(funcid ==2){
       console.log("sold to pharma ");
@@ -80,7 +87,7 @@ class App extends Component {
 
 
 
-  UpdateMed_dist = async(upc,funcid,_date) => {
+  UpdateMed_dist = async(upc,name,long,lat,funcid,_date) => {
     const { accounts, contract } = this.state;
     alert("working"); 
     console.log("this is for checking purpose");
@@ -88,10 +95,10 @@ class App extends Component {
 
     if(funcid ==1) {
       console.log("recieved distributor");
-      var history = "This medicine was recieved by manufacturer on" + _date;
+      var history = "This medicine was recieved by distributor"+  name + "on" + _date;
        alert(history);
        console.log(history);
-      await contract.methods.RecievedDistributor(upc,history).send({from : accounts[0]});
+      await contract.methods.RecievedDistributor(upc,name,long,lat,accounts[0],history).send({from : accounts[0]});
     }
     if(funcid ==2){
       console.log("sold to pharma ");
@@ -105,7 +112,7 @@ class App extends Component {
       var history = "This medicine was shipped to pharmacist by distributor on" + _date;
        alert(history);
        console.log(history);
-      await contract.methods.ShippedtoPharma(upc,history).send({from : accounts[0]});
+      await contract.methods.ShippedtoPharma(upc, history).send({from : accounts[0]});
 
     }
   }
@@ -153,13 +160,11 @@ class App extends Component {
     const response = await contract.methods.fetchstate(upc).call();
 
 
-     console.log( response._medicineState);     
+     console.log( response._history);     
     // console.log(response);
     var s = response._history;
     console.log(s);
-    var t = response._history;
-    console.log(t);
-    return t;
+    return s;
     
   }
 
@@ -192,7 +197,11 @@ class App extends Component {
     console.log(notes);
     console.log(_history);
 
-
+    // alert("called");
+    // const res = await contract.methods.addManufacturer(accounts[0]);
+    // console.log(res);
+    // const res2 = await contract.methods.isManuisfacturer(accounts[0]);
+    // console.log(res2);
     await contract.methods.makeMedicine(upc, accounts[0], manufacturername, factoryinfo, Latitude, Longitude, notes,_history).send({ from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
@@ -206,6 +215,35 @@ class App extends Component {
 
     //  this.setState({storageValue: response});
   };
+
+
+  Admin_Add_Roles = async (id,acc) => {
+    const { accounts, contract } = this.state;
+    alert("working");
+    console.log("this is for checking purpose");
+    console.log(acc,id);
+    
+    if(id==1){
+      console.log("entered");
+      console.log(acc);
+      const res = await contract.methods.addManufacturer(acc);
+      // console.log(res);
+      console.log("code reached here");
+    }
+    if(id==2){
+     const res =  await contract.methods.isManufacturer(acc);
+     console.log(res);
+    }
+    if(id==3){
+      await contract.methods.addPharmacist(acc);
+    }
+    if(id==4){
+      await contract.methods.addPatient(acc);
+    }
+
+
+  };
+
 
   runExample = async () => {
     const { accounts, contract } = this.state;
@@ -233,8 +271,8 @@ class App extends Component {
           <Routes>
 
           <Route path="/" element={<MainPage/>}> </Route>
-          <Route  path="/Signin" element={<Signin/>}></Route>
-          <Route path="/admin" element={<Admin/>}></Route>
+          <Route  path="/Signin" element={<Signin />}></Route>
+          <Route path="/admin" element={<Admin Admin_Add_Roles={this.Admin_Add_Roles}/>}></Route>
           <Route path="/manufacturer" element={<Form />}></Route>
           <Route path="/manufacturer/makemedicine" element={<MakeMedicine sendtochain={this.sendtochain}/>}> </Route> 
           <Route path="/manufacturer/UpdateMedic" element={<UpdateMedic UpdateMed={this.UpdateMed}/>}> </Route> 

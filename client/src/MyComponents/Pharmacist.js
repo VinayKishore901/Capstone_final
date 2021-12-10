@@ -3,6 +3,9 @@ import React,{useState}from 'react'
 export const Pharmacist = (props) => {
     const [UPC, setUpc] = useState({
         upc: "",
+        Name: "",
+        Long : "",
+        Lat : "",
         myCurrentTime : new Date().toLocaleString(),
     }); 
 
@@ -24,7 +27,7 @@ export const Pharmacist = (props) => {
         const temp = { ...UPC, id: new Date().getTime().toString() }
         console.log(temp.upc);
         const date = UPC.myCurrentTime;
-          { props.UpdateMed_pharma(temp.upc,btnid,date) };
+          { props.UpdateMed_pharma(temp.upc,btnid,temp.Name,temp.Long,temp.Lat,date) };
         // setRecords([...records,newRecord]);
     };
     return (
@@ -60,7 +63,7 @@ export const Pharmacist = (props) => {
               <form action="#" method="POST" className="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" styles="padding: 10px" source="custom" name="form">
                 <div className="u-form-group u-form-name u-form-group-1">
                   <label for="name-ac65" className="u-form-control-hidden u-label"></label>
-                  <input type="text" placeholder="Enter your Name" id="name-ac65" name="name-1" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                  <input type="text" placeholder="Enter your Name"  value={UPC.Name} onChange = {handleInput} name="Name"  id="Name"  className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
                 </div>
                 <div className="u-form-group u-form-name u-form-group-2">
                   <label for="name-ffe5" className="u-form-control-hidden u-label"></label>
@@ -68,11 +71,11 @@ export const Pharmacist = (props) => {
                 </div>
                 <div className="u-form-group u-form-name u-form-group-3">
                   <label for="name-0050" className="u-form-control-hidden u-label"></label>
-                  <input type="text" placeholder="Latitude" id="name-0050" name="name-2" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                  <input type="text" placeholder="Latitude" value={UPC.Lat} onChange = {handleInput} id="Lat" name="Lat" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
                 </div>
                 <div className="u-form-group u-form-group-4">
                   <label for="text-c14e" className="u-form-control-hidden u-label"></label>
-                  <input type="text" placeholder="Longitude" id="text-c14e" name="text" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"/>
+                  <input type="text" placeholder="Longitude" value={UPC.Long} onChange = {handleInput}  id="Long" name="Long" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white"/>
                 </div>
                 <div className="u-align-left u-form-group u-form-submit u-form-group-5">
 

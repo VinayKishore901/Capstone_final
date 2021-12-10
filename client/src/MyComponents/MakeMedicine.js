@@ -34,7 +34,7 @@ export const MakeMedicine = (props) => {
         var history = "This medicine was made by manufaturer"+ " " + newRecord.manufacturername + "on" + MedReg.myCurrentTime;
         alert(history);
         console.log(history);
-         { props.sendtochain(newRecord,history) };
+        { props.sendtochain(newRecord,history) };
         // setRecords([...records,newRecord]);
     };
 
