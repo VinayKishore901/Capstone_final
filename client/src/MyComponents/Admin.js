@@ -19,7 +19,7 @@ export const Admin = (props) => {
       const newRecord = { ...Account, id: new Date().getTime().toString() }
       console.log(newRecord.medicineNotes);
       const id = e.target.dataset.mssg;
-      { props.Admin_Add_Roles(id,Account.acc) };
+      { props.Add_Admin(id,Account.acc) };
 
   };
 

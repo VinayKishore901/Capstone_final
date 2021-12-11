@@ -5,8 +5,6 @@ import ManufacturerRole from "./contracts/ManufacturerRole.json";
 import DistributorRole from "./contracts/DistributorRole.json";
 import PharmacistRole from "./contracts/PatientRole.json";
 import PatientRole from  "./contracts/PatientRole.json";
-
-
 import getWeb3 from "./getWeb3";
 import "./App.css";
 import {Admin} from "./MyComponents/Admin"
@@ -23,7 +21,8 @@ import {Navbar} from "./MyComponents/Navbar";
 import {Footer} from "./MyComponents/Footer";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  state = { web3: null, accounts: null, contract: null , dist : null, 
+    manu:null};
 
   componentDidMount = async () => {
     try {
@@ -41,6 +40,10 @@ class App extends Component {
         deployedNetwork && deployedNetwork.address,
       );
 
+
+      // const ManufacturerData = ManufacturerRole.networks[networkId];
+      // const manufacturer = new web3.eth.Contract(ManufacturerRole.abi, ManufacturerData.address);
+
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts, contract: instance });
@@ -54,6 +57,28 @@ class App extends Component {
     }
   };
 
+
+  
+  Add_Admin = async(btnid ,acc) => {
+    const { accounts, contract } = this.state;
+    if(btnid == 1){
+        alert("working");
+        await contract.methods.addManufacturer(acc).send({from : accounts[0]});
+    }
+    if(btnid == 2){
+      alert("working");
+      await contract.methods.addDistributor(acc).send({from : accounts[0]});
+    }
+    if(btnid == 3){
+      alert("working");
+      await contract.methods.addPharmacist(acc).send({from : accounts[0]});
+    }
+    if(btnid == 4){
+      alert("working");
+      await contract.methods.addPatient(acc).send({from : accounts[0]});
+    }
+  
+  };
 
   UpdateMed_pharma = async(upc,funcid,name,long,lat,_date) => {
     const { accounts, contract } = this.state;
@@ -226,8 +251,8 @@ class App extends Component {
     if(id==1){
       console.log("entered");
       console.log(acc);
-      const res = await contract.methods.addManufacturer(acc);
-      // console.log(res);
+      const res = await contract.methods.addPatient(acc);
+       console.log(res);
       console.log("code reached here");
     }
     if(id==2){
@@ -272,7 +297,7 @@ class App extends Component {
 
           <Route path="/" element={<MainPage/>}> </Route>
           <Route  path="/Signin" element={<Signin />}></Route>
-          <Route path="/admin" element={<Admin Admin_Add_Roles={this.Admin_Add_Roles}/>}></Route>
+          <Route path="/admin" element={<Admin Add_Admin={this.Add_Admin}/>}></Route>
           <Route path="/manufacturer" element={<Form />}></Route>
           <Route path="/manufacturer/makemedicine" element={<MakeMedicine sendtochain={this.sendtochain}/>}> </Route> 
           <Route path="/manufacturer/UpdateMedic" element={<UpdateMedic UpdateMed={this.UpdateMed}/>}> </Route> 
