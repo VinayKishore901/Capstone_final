@@ -1,10 +1,16 @@
 import React ,{useState} from 'react';
+import "./Modal.css"; 
  
 
+
 export const Patient = (props) => {
-    
+     
+     
     const [result, setRes] = useState({
         res : "",
+        linkmanf : "",
+        linkdist : "",
+        linkpharma : "",
     })
      
 
@@ -14,6 +20,18 @@ export const Patient = (props) => {
 
     // const [records,setRecords] = useState([]);
 
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+      setModal(!modal);
+    };
+  
+    if(modal) {
+      document.body.classList.add('active-modal')
+    } else {
+      document.body.classList.remove('active-modal')
+    }
+
     const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -21,17 +39,54 @@ export const Patient = (props) => {
 
         setUpc({ ...UPC, [name]: value })
     }
+    
 
     const handleClick = async(e) => {
+      
          console.log("nothing happens for right now");
         const upc = UPC.upc;
          
         { var response =await  props.fetch_state(upc);
-          setRes({ ...result, res :response  });
           console.log(response);
+          const hist = await response.s;
+          const c = await response.cord;
+         
+          console.log(hist);
+          //fetching cordinates from blockchain 
+        
+          console.log(c);
+          //manuf link 
+          const manuflat = c[0];
+          const manuflong = c[1];
+          const manuflink = "http://maps.google.com/maps?q="+manuflat+","+manuflong;
+          //distlink 
+          const distlat = c[2];
+          const distlong = c[3];
+          const distlink = "http://maps.google.com/maps?q="+distlat+","+distlong;
+          //pharmalink
+          const pharmalat = c[4];
+          const pharmalong = c[5];
+          const pharmalink = "http://maps.google.com/maps?q="+pharmalat+","+pharmalong;
+
+          console.log(manuflink);
+          console.log(distlink);
+          console.log(pharmalink);
           
+          const arr = hist.split("."); 
+          console.log(arr);
+          var text = "";
+          for (let i = 0; i < arr.length ; i++) {
+            text +=  i +  arr[i] + "\n";
+          }
+          
+          setRes({ ...result,res : text ,linkmanf : manuflink , linkdist : distlink , linkpharma : pharmalink  });
+          
+          
+
+
         };
-        alert("checking");
+        toggleModal();
+        // alert("checking");
          
 
        
@@ -59,9 +114,11 @@ export const Patient = (props) => {
 
             <p>The current state of the medicine is : {result.res}</p>
         </div> */}
+        
 
 
         <div className="u-body">
+        
 
     <section class="u-clearfix u-image u-section-10" id="carousel_604b" data-image-width="1600" data-image-height="1067">
       <div class="u-clearfix u-sheet u-sheet-1">
@@ -94,7 +151,27 @@ export const Patient = (props) => {
         </div>
       </div>
     </section>
+    {/* <button onClick={toggleModal} className="btn-modal">
+        Open
+      </button> */}
 
+      {modal && (
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay"></div>
+          <div className="modal-content">
+            <h2>History of your Medicine</h2>
+             <p>{result.res}</p>
+            <button className="close-modal" onClick={toggleModal}>
+              CLOSE
+            </button>
+          </div>
+        </div>
+      )}
+
+    
+ 
+ 
+  
 
         </div>
 

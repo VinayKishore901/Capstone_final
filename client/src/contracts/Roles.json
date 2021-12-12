@@ -210,10 +210,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "349:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -336,10 +336,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "385:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -651,10 +651,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "585:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -761,10 +761,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "621:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1076,10 +1076,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "864:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1486,10 +1486,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "349:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1612,10 +1612,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "385:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1927,10 +1927,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "585:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2037,10 +2037,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "621:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2352,10 +2352,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1553,
-                        1554
+                        1599,
+                        1600
                       ],
-                      "referencedDeclaration": 1553,
+                      "referencedDeclaration": 1599,
                       "src": "864:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2567,12 +2567,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x52587F64211Feac70f234EA329C0AcE2464AE28a",
-      "transactionHash": "0x2fee7b73a2b9bb4ca36e1e70223218f9bd7705c5067c27a5e9abfff75f156590"
+      "address": "0x331F29c1E79c4429319Bee07A5855124B0B08CAe",
+      "transactionHash": "0xaec76719f1a238eeadb318815b68e9e377f227512eff2deec3b6d75b772a6135"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2021-12-11T13:15:49.339Z",
+  "updatedAt": "2021-12-12T12:47:01.145Z",
   "devdoc": {
     "details": "Library for managing addresses assigned to a Role.",
     "methods": {},

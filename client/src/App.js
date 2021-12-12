@@ -88,21 +88,21 @@ class App extends Component {
 
     if(funcid ==1) {
       console.log("recieved distributor");
-      var history = "This medicine was recieved by pharmacist " + name +  "on" + _date;
+      var history = "This medicine was recieved by pharmacist " + name +  "on" + _date+".";
       alert(history);
       console.log(history);
       await contract.methods.Recieved_Pharma(upc,name,long,lat,accounts[0],history).send({from : accounts[0]});
     }
     if(funcid ==2){
       console.log("sold to pharma ");
-      var history = "This medicine was sold to patient by pharmacist on" + _date;
+      var history = "This medicine was sold to patient by pharmacist on" + _date+".";
       alert(history);
       console.log(history);
       await contract.methods.Sold_to_Patient(upc,history).send({from : accounts[0]});
     }
     if(funcid ==3){
       console.log("shipped to pharma");
-      var history = "This medicine was shipped to patient by pharmacist on" + _date;
+      var history = "This medicine was shipped to patient by pharmacist on" + _date+".";
       alert(history);
       console.log(history);
       await contract.methods.Shipped_to_Patient(upc,history).send({from : accounts[0]});
@@ -120,21 +120,21 @@ class App extends Component {
 
     if(funcid ==1) {
       console.log("recieved distributor");
-      var history = "This medicine was recieved by distributor"+  name + "on" + _date;
+      var history = "This medicine was recieved by distributor"+  name + "on" + _date+".";
        alert(history);
        console.log(history);
       await contract.methods.RecievedDistributor(upc,name,long,lat,accounts[0],history).send({from : accounts[0]});
     }
     if(funcid ==2){
       console.log("sold to pharma ");
-      var history = "This medicine was sold to pharmacist by distributor on" + _date;
+      var history = "This medicine was sold to pharmacist by distributor on" + _date+".";
        alert(history);
        console.log(history);
       await contract.methods.SoldtoPharma(upc,history).send({from : accounts[0]});
     }
     if(funcid ==3){
       console.log("shipped to pharma");
-      var history = "This medicine was shipped to pharmacist by distributor on" + _date;
+      var history = "This medicine was shipped to pharmacist by distributor on" + _date+".";
        alert(history);
        console.log(history);
       await contract.methods.ShippedtoPharma(upc, history).send({from : accounts[0]});
@@ -150,26 +150,26 @@ class App extends Component {
 
     if(funcid == 1){
       alert("packed called");
-       var history = "This medicine was packed by the manufacturer on" + _date;
+       var history = "This medicine was packed by the manufacturer on" + _date+".";
        alert(history);
        console.log(history);
        await contract.methods.packMedicine(upc,history).send({from : accounts[0]});
     }
     if(funcid == 2){
       alert("For sale called");
-      var history = "This medicine was marked on sale by the manufacturer on" + _date;
+      var history = "This medicine was marked on sale by the manufacturer on" + _date+".";
       alert(history);
       console.log(history);
        await contract.methods.forSale_bymanuf(upc,history).send({from : accounts[0]});
     }if(funcid == 3){
       alert("sold called");
-      var history = "This medicine was sold by the manufacturer to distributor on" + _date;
+      var history = "This medicine was sold by the manufacturer to distributor on" + _date+".";
       alert(history);
       console.log(history);
        await contract.methods.soldToDistributor(upc,history).send({from : accounts[0]});
     }if(funcid == 4){
       alert("shipped called");
-      var history = "This medicine was shipped by the manufacturer on" + _date;
+      var history = "This medicine was shipped by the manufacturer on" + _date+".";
       alert(history);
       console.log(history);
        await contract.methods.shippedByManufacturer(upc,history).send({from : accounts[0]});
@@ -177,19 +177,35 @@ class App extends Component {
     
   }
 
-  
+  fetch_cod = async(upc) => {
+    const { accounts, contract } = this.state;
+    alert("working");
+    const c = await contract.methods.fetchCordinates(upc).call();
+    // console.log(res);
+    const manuflat = c.manfcodlat;
+    const manuflong = c.manfcodlong;
+    const distlat = c.distcodlat;
+    const distlong = c.distcodlong;
+    const pharmalat = c.phcodlat;
+    const pharmalong = c.phcodlong;
+    const resarr = [manuflat,manuflong,distlat,distlong,pharmalat,pharmalong];
+    
+    return resarr;
+  }
 
   fetch_state = async(upc) =>{
     const { accounts, contract } = this.state;
-    alert("working");
     const response = await contract.methods.fetchstate(upc).call();
 
 
      console.log( response._history);     
     // console.log(response);
     var s = response._history;
-    console.log(s);
-    return s;
+    // console.log(s);
+
+    const cord =await this.fetch_cod(upc);
+    console.log(cord);
+    return {s,cord};
     
   }
 

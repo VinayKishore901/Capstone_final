@@ -31,7 +31,7 @@ export const MakeMedicine = (props) => {
         e.preventDefault();
         const newRecord = { ...MedReg, id: new Date().getTime().toString() }
         console.log(newRecord.medicineNotes);
-        var history = "This medicine was made by manufaturer"+ " " + newRecord.manufacturername + "on" + MedReg.myCurrentTime;
+        var history = "This medicine was made by manufaturer"+ "->" + newRecord.manufacturername + "on" + MedReg.myCurrentTime +".";
         alert(history);
         console.log(history);
         { props.sendtochain(newRecord,history) };

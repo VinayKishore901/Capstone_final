@@ -406,6 +406,19 @@ contract SimpleStorage is PharmacistRole, PatientRole,ManufacturerRole , Distrib
       );
   }
 
+   function fetchCordinates(uint _upc) public view onlyPatient returns (string memory manfcodlat,string memory manfcodlong,string memory distcodlat,string memory distcodlong,string memory phcodlat,string memory phcodlong) {
+    return (
+      medicines[_upc].originFactoryLatitude,
+      medicines[_upc].originFactoryLongitude,
+      medicines[_upc].DistLatitude,
+      medicines[_upc].DistLongitude,
+      medicines[_upc].PharmaLatitude,
+      medicines[_upc].PharmaLongitude
+      );
+  }
+
+  
+
   function fetchMedicine(uint _upc) public view onlyPatient returns (uint upc_ , address ownerid , string memory manufacturername, string memory Latitude , string memory Longitude,string memory factoryinfo , string memory notes) {
     return(
           _upc,
