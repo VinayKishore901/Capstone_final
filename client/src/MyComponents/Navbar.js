@@ -42,7 +42,7 @@ export const Navbar = () => {
                         <Link to="/manufacturer" className="u-button-style u-nav-link u-white" >Manufacturer</Link>
                       </li>
                       <li className="u-nav-item">
-                        <Link to="distributor" className="u-button-style u-nav-link u-white" >Distributor</Link>
+                        <Link to="/distributor" className="u-button-style u-nav-link u-white" >Distributor</Link>
                       </li>
                       <li className="u-nav-item">
                         <Link to="/pharmacist" className="u-button-style u-nav-link u-white" >Pharmacist</Link>
@@ -54,7 +54,7 @@ export const Navbar = () => {
                   </div>
                 </li>
                 <li className="u-nav-item">
-                  <Link to="/" className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" styles="padding: 10px 20px;">Contact</Link>
+                  <Link to="/team" className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" styles="padding: 10px 20px;">Contact</Link>
                 </li>
               </ul>
             </div>

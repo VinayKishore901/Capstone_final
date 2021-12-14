@@ -3,6 +3,7 @@ import {auth} from './firebase';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import App from '../App';
 toast.configure();
 
 

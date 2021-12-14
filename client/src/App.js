@@ -18,7 +18,9 @@ import { Distributor } from "./MyComponents/Distributor";
 import { Pharmacist } from "./MyComponents/Pharmacist";
 import {  Signin } from "./MyComponents/Signin";
 import {Navbar} from "./MyComponents/Navbar";
-import {Footer} from "./MyComponents/Footer";
+import {Footer} from "./MyComponents/Footer"; 
+import { Team } from "./MyComponents/Team";
+import { About } from "./MyComponents/About";
 
 class App extends Component {
   state = { web3: null, accounts: null, contract: null , dist : null, 
@@ -311,7 +313,9 @@ class App extends Component {
         
           <Routes>
 
-          <Route path="/" element={<MainPage/>}> </Route>
+          <Route path="/" element={<MainPage/>}> </Route> 
+          <Route path="/team" element={<Team/>}> </Route>
+          <Route path="/about" element={<About/>}></Route>
           <Route  path="/Signin" element={<Signin />}></Route>
           <Route path="/admin" element={<Admin Add_Admin={this.Add_Admin}/>}></Route>
           <Route path="/manufacturer" element={<Form />}></Route>

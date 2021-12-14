@@ -4,7 +4,7 @@ import "./Modal.css";
 
 
 export const Patient = (props) => {
-     
+  var val = 55;
      
     const [result, setRes] = useState({
         res : "",
@@ -74,12 +74,12 @@ export const Patient = (props) => {
           
           const arr = hist.split("."); 
           console.log(arr);
-          var text = "";
-          for (let i = 0; i < arr.length ; i++) {
-            text +=  i +  arr[i] + "\n";
-          }
+           
+          // console.log(arr.join('\r\n'));
           
-          setRes({ ...result,res : text ,linkmanf : manuflink , linkdist : distlink , linkpharma : pharmalink  });
+
+
+          setRes({ ...result,res : arr ,linkmanf : manuflink , linkdist : distlink , linkpharma : pharmalink  });
           
           
 
@@ -92,6 +92,12 @@ export const Patient = (props) => {
        
          
     };
+
+    function ReptileListItems() {
+      const reptiles = result.res;
+    
+      return reptiles.map((reptile) => <li>{reptile}</li>);
+    }
 
 
 
@@ -160,7 +166,11 @@ export const Patient = (props) => {
           <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
             <h2>History of your Medicine</h2>
-             <p>{result.res}</p>
+             {ReptileListItems()}
+             <a href={result.linkmanf}>Manufacturer Location</a> <br/> 
+             <a href={result.linkdist}>Distributor Location</a> <br/>
+             <a href={result.linkpharma}>Pharmacist Location</a>
+            
             <button className="close-modal" onClick={toggleModal}>
               CLOSE
             </button>

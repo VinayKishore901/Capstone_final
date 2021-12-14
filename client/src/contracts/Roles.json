@@ -2567,12 +2567,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x331F29c1E79c4429319Bee07A5855124B0B08CAe",
-      "transactionHash": "0xaec76719f1a238eeadb318815b68e9e377f227512eff2deec3b6d75b772a6135"
+      "address": "0x1Aa700be67F40503fd5d1fa64ed74CD232b53159",
+      "transactionHash": "0xf429ba2c4b0df8dcf06243c26b4fcd59b1caf29eb151881d8dfa0e38624e81a3"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2021-12-12T12:47:01.145Z",
+  "updatedAt": "2021-12-14T12:31:27.441Z",
   "devdoc": {
     "details": "Library for managing addresses assigned to a Role.",
     "methods": {},

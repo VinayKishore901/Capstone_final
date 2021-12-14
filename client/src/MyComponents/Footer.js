@@ -16,8 +16,8 @@ export const Footer = () => {
                     <div data-position="" className="u-position">
                       <div className="u-block">
                         <div className="u-block-container u-clearfix">
-                          <h5 className="u-block-header u-text">Block header </h5>
-                          <div className="u-block-content u-text"> Block content. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices. </div>
+                          <h5 className="u-block-header u-text">About</h5>
+                          <div className="u-block-content u-text">Capstone project on medical supply chain management system</div>
                         </div>
                       </div>
                     </div>
@@ -28,8 +28,9 @@ export const Footer = () => {
                     <div data-position="" className="u-position">
                       <div className="u-block">
                         <div className="u-block-container u-clearfix">
-                          <h5 className="u-block-header u-text"> Block header </h5>
-                          <div className="u-block-content u-text">Block content. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices. </div>
+                          <h5 className="u-block-header u-text">Thapar Institute of Engineering and Technology, Patiala</h5>
+                          <div className="u-block-content u-text">Computer Science and Engineering Department 
+December 2021</div>
                         </div>
                       </div>
                     </div>
@@ -40,8 +41,15 @@ export const Footer = () => {
                     <div data-position="" className="u-position u-position-3">
                       <div className="u-block">
                         <div className="u-block-container u-clearfix">
-                          <h5 className="u-block-header u-text">Block header </h5>
-                          <div className="u-block-content u-text">Block content. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices. </div>
+                          <h5 className="u-block-header u-text">The Team</h5>
+                          <div className="u-block-content u-text">(101803473) VINAY KISHORE</div>
+                          <div className="u-block-content u-text">(101803454) KUSH GUPTA </div>
+                          <div className="u-block-content u-text">(101803471) PIYUSH SETHI</div>
+                          <div className="u-block-content u-text">(101803155) KRITIKA JAMWAL</div>
+                          <div className="u-block-content u-text">BE Third Year- COE CPG No: 13</div>
+
+
+ 
                         </div>
                       </div>
                     </div>

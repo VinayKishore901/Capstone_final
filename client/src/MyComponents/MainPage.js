@@ -185,8 +185,8 @@ export const MainPage = () => {
                     <div className="u-container-layout u-container-layout-1" src="">
                       <h2 className="u-custom-font u-text u-text-body-alt-color u-text-1" data-animation-name="zoomIn" data-animation-duration="1000" data-animation-direction="Down">Med. Chain</h2>
                       <h2 className="u-custom-font u-text u-text-body-alt-color u-text-2" data-animation-name="zoomIn" data-animation-duration="1000" data-animation-direction="Down">supplychain solutions</h2>
-                      <p className="u-text u-text-body-alt-color u-text-3">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident</p>
-                      <Link to="/" className="u-btn u-button-style u-palette-4-base u-btn-1">learn more</Link>
+                      <p className="u-text u-text-body-alt-color u-text-3">Blockchain based medicine supply chain solution.</p>
+                      <Link to="/about" className="u-btn u-button-style u-palette-4-base u-btn-1">learn more</Link>
                     </div>
                   </div>
                   <div className="u-align-left u-container-style u-effect-hover-zoom u-hover-feature u-layout-cell u-opacity u-opacity-35 u-right-cell u-size-20 u-size-xs-60 u-layout-cell-2" data-image-width="1119" data-image-height="1080" data-animation-name="zoomIn" data-animation-duration="500" data-animation-direction="Down">
