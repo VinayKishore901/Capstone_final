@@ -10,11 +10,12 @@ html{
     font-family: sans-serif;
     line-height: 1.15;
 }
+ 
 body{
     font-family: 'lato', sans-serif;
     color: #454545;
     font-weight: 300;
-    background: #ffffff;
+    background: #A3BBDD;
 }
 a{
     color: #333333;
@@ -86,7 +87,21 @@ img{
     margin-right: -15px;
     margin-left: -15px;
 }
+.row1{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -550px;
+    margin-left: 150px;
+}
 .column{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.column1{
     position: relative;
     width: 100%;
     padding-right: 15px;
@@ -103,7 +118,7 @@ img{
     text-align: center;
 }
 .team .team-img img{
-    width: 160px;
+    width: 200px;
     height: auto;
     border-radius: 100%;
     border: 20px solid #f3f4fa;
