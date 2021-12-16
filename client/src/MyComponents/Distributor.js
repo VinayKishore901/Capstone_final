@@ -6,6 +6,7 @@ export const Distributor = (props) => {
     const [UPC, setUpc] = useState({
         upc: "",
         Name : "",
+        medname : "",
         Long : "",
         Lat : "",
         myCurrentTime : new Date().toLocaleString(),
@@ -21,7 +22,7 @@ export const Distributor = (props) => {
         setUpc({ ...UPC, [name]: value })
     }
 
-    const handleClick =  (e) => {
+    const handleClick =  async (e) => {
         // console.log(e.target.dataset);
         const btnid = e.target.dataset.mssg;
         console.log(btnid);
@@ -29,7 +30,16 @@ export const Distributor = (props) => {
         const temp = { ...UPC, id: new Date().getTime().toString() }
         console.log(temp.upc);
         const date = UPC.myCurrentTime;
-         { props.UpdateMed_dist(temp.upc,temp.Name,temp.Long,temp.Lat,btnid,date) };
+        const medname = UPC.medname;
+        { 
+          if(btnid == 4){
+            const res = await props.UpdateMed_dist(medname,temp.upc,temp.Name,temp.Long,temp.Lat,btnid,date);
+            alert("There are " + res + " medicines present in your stock");
+          }
+          else{
+           props.UpdateMed_dist(medname,temp.upc,temp.Name,temp.Long,temp.Lat,btnid,date);
+          }
+        };
         // setRecords([...records,newRecord]);
     };
 
@@ -66,7 +76,12 @@ export const Distributor = (props) => {
                
                 <div className="u-form-group u-form-name u-form-group-1">
                   <label for="name-51ec" className="u-form-control-hidden u-label"></label>
-                  <input type="text" placeholder="Enter your Name" value={UPC.Name} onChange = {handleInput} id="Name" name="Name" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                  <input type="text" placeholder="Enter your Name(Also required for checking stock)" value={UPC.Name} onChange = {handleInput} id="Name" name="Name" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                </div>
+
+                <div className="u-form-group u-form-name u-form-group-1">
+                  <label for="name-51ec" className="u-form-control-hidden u-label"></label>
+                  <input type="text" placeholder="Medicine Name(To check stock)" value={UPC.medname} onChange = {handleInput} id="medname" name="medname" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
                 </div>
 
                 <div className="u-form-group u-form-name u-form-group-2">
@@ -104,6 +119,11 @@ export const Distributor = (props) => {
 
                 <div className="u-align-left u-form-group u-form-submit u-form-group-7">
                 <button onClick={handleClick} data-mssg="3" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-3"> Shipped </button>
+                  {/* <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-3">shipped</a>
+                  <input type="submit" value="submit" className="u-form-control-hidden" wfd-invisible="true"/> */}
+                </div>
+                <div className="u-align-left u-form-group u-form-submit u-form-group-7">
+                <button onClick={handleClick} data-mssg="4" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-3"> Shipped </button>
                   {/* <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-3">shipped</a>
                   <input type="submit" value="submit" className="u-form-control-hidden" wfd-invisible="true"/> */}
                 </div>

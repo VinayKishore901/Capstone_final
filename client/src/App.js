@@ -82,7 +82,7 @@ class App extends Component {
   
   };
 
-  UpdateMed_pharma = async(upc,funcid,name,long,lat,_date) => {
+  UpdateMed_pharma = async(medname,upc,funcid,name,long,lat,_date) => {
     const { accounts, contract } = this.state;
     alert("working"); 
     console.log("this is for checking purpose");
@@ -110,11 +110,16 @@ class App extends Component {
       await contract.methods.Shipped_to_Patient(upc,history).send({from : accounts[0]});
 
     }
+    if(funcid == 4){
+      const res = await contract.methods.checkstockpharma(name,medname).call();
+      console.log(res);
+      return res;
+    }
   }
 
 
 
-  UpdateMed_dist = async(upc,name,long,lat,funcid,_date) => {
+  UpdateMed_dist = async(medname ,upc,name,long,lat,funcid,_date) => {
     const { accounts, contract } = this.state;
     alert("working"); 
     console.log("this is for checking purpose");
@@ -142,9 +147,14 @@ class App extends Component {
       await contract.methods.ShippedtoPharma(upc, history).send({from : accounts[0]});
 
     }
+    if(funcid == 4){
+      const res = await contract.methods.checkstockdist(name,medname).call();
+      console.log(res);
+      return res;
+    }
   }
 
-  UpdateMed = async(upc,funcid,_date) =>{
+  UpdateMed = async(upc,manuname,name,funcid,_date) =>{
     const { accounts, contract } = this.state;
     alert("working");
     console.log("this is for checking purpose");
@@ -176,7 +186,27 @@ class App extends Component {
       console.log(history);
        await contract.methods.shippedByManufacturer(upc,history).send({from : accounts[0]});
     }
+    if(funcid == 5){
+      const res = await contract.methods.checkstockmanuf(manuname,name).call()
+      console.log(res);
+      return res;
+    }
     
+  }
+
+
+
+
+  claimed = async(upc) => {
+    const { accounts, contract } = this.state;
+    await contract.methods.claim(upc).send({from : accounts[0]});
+  }
+
+  checkauth = async(upc) =>{
+    const { accounts, contract } = this.state;
+    const res =  await contract.methods.checkmedicine(upc).call();
+    console.log(res);
+    return res;
   }
 
   fetch_cod = async(upc) => {
@@ -245,7 +275,7 @@ class App extends Component {
     // console.log(res);
     // const res2 = await contract.methods.isManuisfacturer(accounts[0]);
     // console.log(res2);
-    await contract.methods.makeMedicine(upc, accounts[0], manufacturername, factoryinfo, Latitude, Longitude, notes,_history).send({ from: accounts[0] });
+    await contract.methods.makeMedicine(name ,upc, accounts[0], manufacturername, factoryinfo, Latitude, Longitude, notes,_history).send({ from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
     //const response = await contract.methods.get().call();
@@ -323,7 +353,7 @@ class App extends Component {
           <Route path="/manufacturer/UpdateMedic" element={<UpdateMedic UpdateMed={this.UpdateMed}/>}> </Route> 
           <Route path ="distributor" element={<Distributor UpdateMed_dist={this.UpdateMed_dist}/>}></Route>
           <Route path="/pharmacist" element={<Pharmacist UpdateMed_pharma={this.UpdateMed_pharma}/> }></Route>
-          <Route path="/patient" element={<Patient fetch_state={this.fetch_state}/>}></Route>
+          <Route path="/patient" element={<Patient fetch_state={this.fetch_state} claimed={this.claimed} checkauth={this.checkauth}/>}></Route>
           
 
           </Routes>

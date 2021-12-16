@@ -4,6 +4,7 @@ export const Pharmacist = (props) => {
     const [UPC, setUpc] = useState({
         upc: "",
         Name: "",
+        medname : "",
         Long : "",
         Lat : "",
         myCurrentTime : new Date().toLocaleString(),
@@ -19,15 +20,25 @@ export const Pharmacist = (props) => {
         setUpc({ ...UPC, [name]: value })
     }
 
-    const handleClick =  (e) => {
+    const handleClick =  async(e) => {
         // console.log(e.target.dataset);
         const btnid = e.target.dataset.mssg;
         console.log(btnid);
         e.preventDefault();
         const temp = { ...UPC, id: new Date().getTime().toString() }
         console.log(temp.upc);
+        const medname = UPC.medname;
         const date = UPC.myCurrentTime;
-          { props.UpdateMed_pharma(temp.upc,btnid,temp.Name,temp.Long,temp.Lat,date) };
+          {
+            if(btnid == 4)
+            {
+                const res = await   props.UpdateMed_pharma(medname,temp.upc,btnid,temp.Name,temp.Long,temp.Lat,date);
+                alert("There are " + res + " medicines in your stock");
+            } 
+            else{
+                props.UpdateMed_pharma(medname,temp.upc,btnid,temp.Name,temp.Long,temp.Lat,date);
+            } 
+          };
         // setRecords([...records,newRecord]);
     };
     return (
@@ -63,7 +74,11 @@ export const Pharmacist = (props) => {
               <form action="#" method="POST" className="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" styles="padding: 10px" source="custom" name="form">
                 <div className="u-form-group u-form-name u-form-group-1">
                   <label for="name-ac65" className="u-form-control-hidden u-label"></label>
-                  <input type="text" placeholder="Enter your Name"  value={UPC.Name} onChange = {handleInput} name="Name"  id="Name"  className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                  <input type="text" placeholder="Enter your Name(REquired for stock check also)"  value={UPC.Name} onChange = {handleInput} name="Name"  id="Name"  className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                </div>
+                <div className="u-form-group u-form-name u-form-group-1">
+                  <label for="name-ac65" className="u-form-control-hidden u-label"></label>
+                  <input type="text" placeholder="Enter Medicine name(To check stock)"  value={UPC.medname} onChange = {handleInput} name="medname"  id="medname"  className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
                 </div>
                 <div className="u-form-group u-form-name u-form-group-2">
                   <label for="name-ffe5" className="u-form-control-hidden u-label"></label>
@@ -82,6 +97,7 @@ export const Pharmacist = (props) => {
                     <button onClick={handleClick} data-mssg="1" className="u-border-2 u-border-black u-btn u-btn-submit u-button-styles= u-hover-black u-none u-text-black u-text-hover-white u-btn-1"> Recieved </button>
                     <button onClick={handleClick} data-mssg="2" className="u-border-2 u-border-black u-btn u-btn-submit u-button-styles= u-hover-black u-none u-text-black u-text-hover-white u-btn-2"> Sold </button>
                     <button onClick={handleClick} data-mssg="3" className="u-border-2 u-border-black u-btn u-btn-submit u-button-styles= u-hover-black u-none u-text-black u-text-hover-white u-btn-3"> Shipped </button>
+                    <button onClick={handleClick} data-mssg="4" className="u-border-2 u-border-black u-btn u-btn-submit u-button-styles= u-hover-black u-none u-text-black u-text-hover-white u-btn-3"> Shipped </button>
 
 
                   {/* <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-styles= u-hover-black u-none u-text-black u-text-hover-white u-btn-1">received</a>

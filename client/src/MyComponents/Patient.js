@@ -22,6 +22,31 @@ export const Patient = (props) => {
 
     const [modal, setModal] = useState(false);
 
+
+
+    const claim = () => {
+        const upc = UPC.upc;
+        props.claimed(upc);
+        alert("claimed");
+    };
+
+    const checkauth = async() => {
+      {
+      const upc = UPC.upc;
+      var res = await  props.checkauth(upc);
+      console.log(res);
+      if(res == true){
+        alert("It is authentic and you can have it");
+      }
+      else{
+        alert("It is not authentic , please complaint to us with upc regarding the same on admin@med.chain");
+      }
+    };
+    
+    }  
+
+
+
     const toggleModal = () => {
       setModal(!modal);
     };
@@ -143,6 +168,16 @@ export const Patient = (props) => {
 
                 <div class="u-align-left u-form-group u-form-submit u-form-group-2">
                 <button onClick={handleClick} className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">Submit Request</button>
+                  {/* <a href="#" class="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">Submit request</a> */}
+                  <input type="submit" value="submit" class="u-form-control-hidden" wfd-invisible="true"/>
+                </div>
+                <div class="u-align-left u-form-group u-form-submit u-form-group-2">
+                <button onClick={claim} className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">Claim medicine</button>
+                  {/* <a href="#" class="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">Submit request</a> */}
+                  <input type="submit" value="submit" class="u-form-control-hidden" wfd-invisible="true"/>
+                </div>
+                <div class="u-align-left u-form-group u-form-submit u-form-group-2">
+                <button onClick={checkauth} className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">Check Authenticity</button>
                   {/* <a href="#" class="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">Submit request</a> */}
                   <input type="submit" value="submit" class="u-form-control-hidden" wfd-invisible="true"/>
                 </div>

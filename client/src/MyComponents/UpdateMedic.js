@@ -4,6 +4,8 @@ export const UpdateMedic = (props) => {
 
     const [UPC, setUpc] = useState({
         upc: "",
+        manuname : "",
+        name: "",
         myCurrentTime : new Date().toLocaleString(),
     }); 
 
@@ -17,15 +19,26 @@ export const UpdateMedic = (props) => {
         setUpc({ ...UPC, [name]: value })
     }
 
-    const handleClick =  (e) => {
+    const handleClick =  async(e) => {
         // console.log(e.target.dataset);
         const btnid = e.target.dataset.mssg;
         console.log(btnid);
         e.preventDefault();
         const temp = { ...UPC, id: new Date().getTime().toString() }
+        const name = UPC.name;
+        const manuname = UPC.manuname;
         const date = UPC.myCurrentTime;
         console.log(temp.upc);
-        { props.UpdateMed(temp.upc,btnid,date) };
+        { 
+
+          if(btnid == 5){
+            const res = await props.UpdateMed(temp.upc,manuname , name,btnid,date); 
+            alert("There are " + res + " medicines of this type present in your stock"); 
+          }
+          else{
+          props.UpdateMed(temp.upc,manuname , name,btnid,date);
+          }
+        };
         // setRecords([...records,newRecord]);
     };
 
@@ -65,7 +78,17 @@ export const UpdateMedic = (props) => {
                 
                 <div className="u-form-group u-form-name u-form-group-1">
                   <label htmlFor="name-5a14" className="u-form-control-hidden u-label" wfd-invisible="true">Name</label>
-                  <input type="text" placeholder="UPC to Update" id="name-5a14" name="name" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                  <input type="text" placeholder="UPC to Update"onChange={handleInput}  id="upc" name="upc" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                </div>
+
+                <div className="u-form-group u-form-name u-form-group-1">
+                  <label htmlFor="name-5a14" className="u-form-control-hidden u-label" wfd-invisible="true">Name</label>
+                  <input type="text" placeholder="Manufacturer Name(To check stock) "onChange={handleInput}  id="manuname" name="manuname" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
+                </div>
+
+                <div className="u-form-group u-form-name u-form-group-1">
+                  <label htmlFor="name-5a14" className="u-form-control-hidden u-label" wfd-invisible="true">Name</label>
+                  <input type="text" placeholder="Medicine name(To check stock) "onChange={handleInput}  id="name" name="name" className="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required=""/>
                 </div>
 
                 <div className="u-align-left u-form-group u-form-submit u-form-group-2">
@@ -77,6 +100,11 @@ export const UpdateMedic = (props) => {
                 <button onClick={handleClick} data-mssg="3" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1"> Sold </button> 
                 <br/>
                 <button onClick={handleClick} data-mssg="4" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1"> Shipped </button>
+                 
+               
+
+                <br/>
+                <button onClick={handleClick} data-mssg="5" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1"> CkeckStock </button>
 
                   {/* <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">packed</a>
                   <a href="#" className="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">for sale</a>
