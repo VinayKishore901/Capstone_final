@@ -5,12 +5,21 @@ import "./Modal.css";
 
 export const Patient = (props) => {
   var val = 55;
-     
+
+
+ 
     const [result, setRes] = useState({
         res : "",
         linkmanf : "",
         linkdist : "",
         linkpharma : "",
+        did : "",
+        pid : "",
+        mid : "",
+        mname :"",
+        dname :"",
+        pname :"",
+        mnotes :"",
     })
      
 
@@ -75,7 +84,16 @@ export const Patient = (props) => {
           console.log(response);
           const hist = await response.s;
           const c = await response.cord;
-         
+          const info = await response.info;
+          console.log(info);
+          const mid = info.mid;
+          const did = info.did;
+          const pid = info.pid;
+          const mname = info.mname;
+          const dname = info.dname;
+          const pname = info.pname;
+          const mnotes = info.mnotes;
+
           console.log(hist);
           //fetching cordinates from blockchain 
         
@@ -104,7 +122,7 @@ export const Patient = (props) => {
           
 
 
-          setRes({ ...result,res : arr ,linkmanf : manuflink , linkdist : distlink , linkpharma : pharmalink  });
+          setRes({ ...result,res : arr ,linkmanf : manuflink , linkdist : distlink , linkpharma : pharmalink ,mid: mid, did :did, pid:pid ,mname:mname,dname:dname,pname:pname,mnotes:mnotes  });
           
           
 
@@ -200,6 +218,13 @@ export const Patient = (props) => {
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
+          <h2>Medicine Details</h2>
+            <p>Metamask address of manufacturer - {result.mid} <br/>Manufacturer name- {result.mname} <br/>
+            Metamask address of distributor - {result.did}<br/> Distrinutor name- {result.dname}<br/>
+            Metamask address of pharmacist  - {result.pid} <br/>Pharmacist name- {result.pname}<br/>
+            Medicine Notes -{result.mnotes}</p>
+            
+            
             <h2>History of your Medicine</h2>
              {ReptileListItems()}
              <a href={result.linkmanf}>Manufacturer Location</a> <br/> 

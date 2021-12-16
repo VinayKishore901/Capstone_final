@@ -237,7 +237,9 @@ class App extends Component {
 
     const cord =await this.fetch_cod(upc);
     console.log(cord);
-    return {s,cord};
+
+    const info = await contract.methods.fetchMedicine(upc).call();
+    return {s,cord,info};
     
   }
 

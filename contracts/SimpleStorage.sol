@@ -518,15 +518,21 @@ contract SimpleStorage is PharmacistRole, PatientRole,ManufacturerRole , Distrib
 
   
 
-  function fetchMedicine(uint _upc) public view onlyPatient returns (uint upc_ , address ownerid , string memory manufacturername, string memory Latitude , string memory Longitude,string memory factoryinfo , string memory notes) {
+  function fetchMedicine(uint _upc) public view onlyPatient returns (address mid,address did,address pid,string memory mname,string memory dname,string memory pname,string memory mnotes) {
     return(
-          _upc,
-          medicines[_upc].ownerID,
-          medicines[_upc].originFactoryName,
-          medicines[_upc].originFactoryLatitude,
-          medicines[_upc].originFactoryLongitude,
-          medicines[_upc].originFactoryInformation,
-          medicines[_upc].medicineNotes
+
+
+    
+     medicines[_upc].originManufacturerID, // Metamask-Ethereum address of the Manufacturer
+     medicines[_upc].distributorID,  // Metamask-Ethereum address of the Distributor
+     medicines[_upc].pharmacistID, // Metamask-Ethereum address of the Pharmacist
+     medicines[_upc].originFactoryName, // Manufacturer Name
+     medicines[_upc].DistName,
+     medicines[_upc].PharamaName, 
+     medicines[_upc].medicineNotes // Product Notes
+    
+    
+           
     );
   }
 
